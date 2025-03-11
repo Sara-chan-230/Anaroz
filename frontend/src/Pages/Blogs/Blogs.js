@@ -1,7 +1,7 @@
 import HeroSection from "../../Components/Sections/Blogs/HeroSection";
 const Blogs = () => {
     return (
-        <div>
+        <div className="pt-28">
             <HeroSection/>
         </div>
     );

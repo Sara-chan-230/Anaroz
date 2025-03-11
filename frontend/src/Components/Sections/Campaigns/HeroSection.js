@@ -22,6 +22,51 @@ const HeroSection = () => {
             fill="#F6F9FA"
           />
         </svg>
+        <svg
+          className="absolute top-0 left-0 right-0 z-10 opacity-50"
+          viewBox="0 0 1512 539"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="500" cy="150" r="150" fill="#34C3F6" opacity="0.5" />
+          <circle cx="1100" cy="400" r="120" fill="#9CD84E" opacity="0.4" />
+          <line
+            x1="0"
+            y1="350"
+            x2="1512"
+            y2="350"
+            stroke="#1E6286"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+          />
+          <rect
+            x="300"
+            y="300"
+            width="200"
+            height="100"
+            fill="#FF7A00"
+            opacity="0.4"
+            transform="rotate(45 300 100)"
+          />
+          <polygon
+            points="150 500, 200 550, 100 550"
+            fill="#F64A45"
+            opacity="0.6"
+          />
+          <polygon
+            points="1200 100, 1250 150, 1150 150"
+            fill="#6136BA"
+            opacity="0.4"
+          />
+          <line
+            x1="0"
+            y1="300"
+            x2="340"
+            y2="0"
+            stroke="#F64A45"
+            strokeWidth="2"
+          />
+        </svg>
       </div>
       <div className="flex flex-col items-center md:space-y-10 space-y-6">
         <h1 className="md:text-7xl text-5xl  italic">
@@ -34,6 +79,7 @@ const HeroSection = () => {
           Watch Video
         </button>
       </div>
+
       <div className="flex lg:space-x-20 md:space-x-5 space-x-3 pb-5">
         <div className="relative">
           <div

@@ -28,7 +28,7 @@ const WhyChooseUs = () => {
   ];
     return (
       <div className="w-[90%] flex flex-col justify-center mx-auto gap-10">
-        <h1 className=" italic lg:text-6xl text-5xl font-semibold">
+        <h1 className=" lg:text-6xl text-5xl font-semibold">
           Why We're the <span className="lg:text-2xl text-xl">Best Choice</span>
         </h1>
         <div className="flex justify-center lg:gap-14 gap-5 flex-wrap">

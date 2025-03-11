@@ -42,8 +42,8 @@ const UsersSection = () => {
   return (
     <div className="flex flex-col justify-center max-w-[90%] mx-auto">
       <div className="flex flex-col gap-10 items-start">
-        <h1 className="lg:text-7xl text-5xl italic self-start">
-          Unified Efforts <span className="lg:text-2xl text-base">for change</span>
+        <h1 className="lg:text-6xl text-5xl italic self-start font-semibold">
+          Unified Efforts <span className="lg:text-2xl text-xl">for change</span>
         </h1>
         <div className="flex justify-between lg:gap-10 gap-5 mt-4 sm:flex-nowrap flex-wrap">
           {cardsData.map((card, i) => (

@@ -2,7 +2,7 @@ import flood from "../../../Assets/Images/about/floods.webp";
 import earthquake from "../../../Assets/Images/about/earthquake.webp";
 const HeroSection = () => {
   return (
-    <header>
+    <header className="flex flex-col gap-14">
       <div className="absolute h-auto top-0 left-0 right-0 -z-20">
         <svg
           width="100%"
@@ -24,8 +24,64 @@ const HeroSection = () => {
             fill="#F6F9FA"
           />
         </svg>
+
+        <svg
+          className="absolute top-0 left-0 right-0 z-10 opacity-50"
+          viewBox="0 0 1512 539"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="500" cy="150" r="150" fill="#0099FF" opacity="0.5" />
+          <circle cx="1100" cy="400" r="120" fill="#4189FF" opacity="0.4" />
+          <circle cx="900" cy="50" r="80" fill="#FBFCFD" opacity="0.3" />
+          <line
+            x1="0"
+            y1="350"
+            x2="1512"
+            y2="350"
+            stroke="#1E6286"
+            strokeWidth="2"
+            strokeDasharray="5,5"
+          />
+          <rect
+            x="300"
+            y="100"
+            width="200"
+            height="100"
+            fill="#FF7A00"
+            opacity="0.4"
+            transform="rotate(45 300 100)"
+          />
+          <polygon
+            points="150 500, 200 550, 100 550"
+            fill="#4189FF"
+            opacity="0.6"
+          />
+          <polygon
+            points="1200 100, 1250 150, 1150 150"
+            fill="#34C3F6"
+            opacity="0.4"
+          />
+          <line
+            x1="50"
+            y1="100"
+            x2="200"
+            y2="50"
+            stroke="#FBFCFD"
+            strokeWidth="2"
+          />
+          <line
+            x1="300"
+            y1="500"
+            x2="500"
+            y2="300"
+            stroke="#FF7A00"
+            strokeWidth="2"
+          />
+        </svg>
       </div>
-      <div className="flex flex-col items-center justify-center mt- relative">
+
+      <div className="flex flex-col items-center justify-center relative">
         <div className="flex flex-row ">
           <h1 className="lg:text-7xl text-5xl italic">
             Your Support
@@ -36,10 +92,10 @@ const HeroSection = () => {
         </div>
 
         <div className="flex flex-row space-x-3 lg:mt-0 mt-10 lg:absolute lg:top-1/4">
-          <button className=" inline-block px-6 py-3 font-bold bg-black text-center hover:bg-gray text-white hover:text-black align-middle transition-all rounded-full  leading-pro text-xs ">
+          <button className="inline-block px-6 py-3 font-bold bg-black text-center hover:bg-gray text-white hover:text-black align-middle transition-all rounded-full leading-pro text-xs">
             Donate now
           </button>
-          <button className=" inline-block px-6 py-3 font-bold bg-gray text-center hover:bg-black text-black hover:text-white align-middle transition-all rounded-full  leading-pro text-xs ">
+          <button className="inline-block px-6 py-3 font-bold bg-gray text-center hover:bg-black text-black hover:text-white align-middle transition-all rounded-full leading-pro text-xs">
             Donate now
           </button>
         </div>
@@ -181,6 +237,33 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="h-32 flex justify-center items-center gap-10 bg-lightBg ">
+        <img
+          className="w-40 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/Populaire-Banque.png")}
+          alt=""
+        />
+        <img
+          className="w-40 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/Bank-of-Africa.png")}
+          alt=""
+        />
+        <img
+          className="w-24 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/Doctors-without-borders.png")}
+          alt=""
+        />
+        <img
+          className="w-40 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/lesieur-cristal.png")}
+          alt=""
+        />
+        <img
+          className="w-32 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/ciments-du-Maroc.png")}
+          alt=""
+        />
       </div>
     </header>
   );

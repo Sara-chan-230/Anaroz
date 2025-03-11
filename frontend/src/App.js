@@ -6,12 +6,16 @@ import Blogs from "./Pages/Blogs/Blogs";
 import Campaigns from "./Pages/Campaigns/Campaings.js";
 import Footer from "./Components/Common/Footer/Footer.js";
 import Signinup from "./Pages/Signin-Signup/Signinup.js";
+import New from "./Pages/News/NewsPage.js";
+import Organization from "./Pages/Organization/Organization.js";
 
 function App() {
   return (
     <div className="overflow-hidden">
       <Routes>
         <Route path="/signup" element={<Signinup />} />
+        <Route path="/news" element={<New />} />
+        <Route path="/organization" element={<Organization />} />
         <Route
           path="/*"
           element={

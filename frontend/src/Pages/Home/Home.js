@@ -7,6 +7,7 @@ import NewsSection from "../../Components/Sections/Home/NewsSection";
 import DonationSection from "../../Components/Sections/Home/DonationSection";
 import AboutSection from "../../Components/Sections/Home/AboutSection";
 import SupporterSection from "../../Components/Sections/Home/SupporterSection";
+import Section from "../../Components/Sections/Home/Section";
 const Home = () => {
     useEffect(() => {
       window.scrollTo(0, 0);
@@ -14,6 +15,7 @@ const Home = () => {
     return (
       <div className="flex flex-col gap-48">
         <HeroSection />
+        <Section />
         <InvitationSection />
         <AffectedSection />
         <MapSection />

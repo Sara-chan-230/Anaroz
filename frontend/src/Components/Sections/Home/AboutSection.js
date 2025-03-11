@@ -1,4 +1,5 @@
 import { easeInOut, motion } from "framer-motion";
+
 const AboutSection = () => {
   return (
     <div className="w-screen lg:flex flex-col justify-center items-center relative mb-64 hidden">
@@ -12,23 +13,23 @@ const AboutSection = () => {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "450px" }}
-            transition={{ duration: 0.8, ease: easeInOut }}
+            transition={{ type: "spring", stiffness: 100, damping: 15 }}
             viewport={{ once: true }}
             className="flex flex-col px-10 py-6 gap-2 w-[450px] min-h-[130px] max-h-[130px] border-y border-l border-primaryLight rounded-l-2xl absolute right-[100%]"
           >
             <motion.h1
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeInOut }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeInOut }}
               viewport={{ once: true }}
               className="text-primaryLight text-2xl font-bold"
             >
               Our vision
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeInOut }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeInOut, delay: 0.2 }}
               viewport={{ once: true }}
               className="text-sm"
             >
@@ -38,6 +39,7 @@ const AboutSection = () => {
           </motion.div>
         </div>
       </div>
+
       {/* Our mission */}
       <div className="flex items-center mr-[200px] absolute top-[82%]">
         <div className="w-[100px] h-[200px] flex items-center justify-center rounded-l-full bg-secondary relative">
@@ -48,23 +50,23 @@ const AboutSection = () => {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "550px" }}
-            transition={{ duration: 1, ease: easeInOut }}
+            transition={{ type: "spring", stiffness: 120, damping: 14 }}
             viewport={{ once: true }}
             className="flex flex-col px-10 py-6 gap-2 w-[550px] min-h-[130px] max-h-[130px] border-y border-r border-secondary rounded-r-2xl absolute left-[100%]"
           >
             <motion.h1
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeInOut }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeInOut }}
               viewport={{ once: true }}
               className="text-secondary text-2xl font-bold"
             >
               Our mission
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeInOut }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeInOut, delay: 0.2 }}
               viewport={{ once: true }}
               className="text-sm"
             >
@@ -74,6 +76,7 @@ const AboutSection = () => {
           </motion.div>
         </div>
       </div>
+
       {/* Our goal */}
       <div className="flex items-center absolute top-[328px]">
         <div className="w-[100px] h-[200px] flex items-center justify-center rounded-r-full bg-purple relative">
@@ -84,28 +87,28 @@ const AboutSection = () => {
           <motion.div
             initial={{ width: 0 }}
             whileInView={{ width: "450px" }}
-            transition={{ duration: 0.8, ease: easeInOut }}
+            transition={{ type: "spring", stiffness: 110, damping: 15 }}
             viewport={{ once: true }}
             className="flex flex-col px-10 py-6 gap-2 w-[450px] min-h-[130px] max-h-[130px] border-y border-l border-purple rounded-l-2xl absolute right-[100%]"
           >
             <motion.h1
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeInOut }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeInOut }}
               viewport={{ once: true }}
               className="text-purple text-2xl font-bold"
             >
               Our goal
             </motion.h1>
             <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.5, ease: easeInOut }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: easeInOut, delay: 0.2 }}
               viewport={{ once: true }}
               className="text-sm"
             >
-              To build an inclusive platform ensuring timely frequente
-              assistance and lasting change
+              To build an inclusive platform ensuring timely frequent assistance
+              and lasting change
             </motion.p>
           </motion.div>
         </div>

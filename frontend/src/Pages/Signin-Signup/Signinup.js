@@ -74,7 +74,7 @@ const YourComponent = () => {
               Log in
             </button>
           </div>
-          <div className="bg-indigo-500 row-span-2 p-4 rounded-xl shadow-lg text-white flex flex-col items-start justify-end space-y-3">
+          <div className="bg-secondary row-span-2 p-4 rounded-xl shadow-lg text-white flex flex-col items-start justify-end space-y-3">
             <h1 className="text-lg font-semibold">
               Don't have an account on Anaroz yet?
             </h1>

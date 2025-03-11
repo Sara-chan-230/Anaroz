@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const navigate = useNavigate();
   return (
-    <nav className="fixed top-0 left-0 z-50 p-2 w-full bg-white border-b border-gray">
+    <nav className="fixed top-0 left-0 z-50 p-2 w-full h-[80px] flex justify-center  bg-white">
       <div className="flex items-center justify-between w-full">
         <div className="flex space-x-20 justify-between items-center">
           <div className="flex flex-row items-center">
@@ -13,6 +13,7 @@ const Navbar = () => {
               width={70}
               alt=""
             />
+            
             <h1 className="text-3xl font-bold text-primary mt-2"> ANaroz</h1>
           </div>
           <ul className="hidden lg:flex space-x-6">
