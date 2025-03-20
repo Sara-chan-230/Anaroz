@@ -1,11 +1,15 @@
-import React from 'react'
-
+import Campaign from "./Campaign";
 const Overview = () => {
   return (
-    <div className='w-full h-screen rounded-xl m-2 bg-white shadow-sm'>
-      
+    <div className="flex  rounded-xl m-2 bg-white">
+      <div className="flex gap-5">
+        <Campaign />
+        <Campaign />
+        <Campaign />
+        <Campaign />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Overview
+export default Overview;

@@ -69,7 +69,7 @@ const HeroSection = () => {
         <div className="w-[25%] h-[400px] rounded-2xl overflow-hidden relative">
           <img
             className="w-full h-full object-cover"
-            src={require("../../../Assets/Images/blogs/hope.webp")}
+            src={require("../../../Assets/Images/blogs/story.webp")}
             alt=""
           />
           <div className="w-full h-full bg-[#0000004c] absolute top-0 left-0 p-5 flex flex-col justify-between">

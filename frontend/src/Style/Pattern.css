@@ -1,0 +1,23 @@
+.pattern1 {
+  background-color: "#1E6286";
+  opacity: 1;
+  background-image: linear-gradient(135deg, #08527a 25%, transparent 25%),
+    linear-gradient(225deg, #08527a 25%, transparent 25%),
+    linear-gradient(45deg, #08527a 25%, transparent 25%),
+    linear-gradient(315deg, #08527a 25%, #1e6286 25%);
+  background-position: 39px 0, 39px 0, 0 0, 0 0;
+  background-size: 78px 78px;
+  background-repeat: "repeat";
+}
+
+.pattern2 {
+  background-color: "#4189FF";
+  opacity: 1;
+  background-image: linear-gradient(135deg, #266dde 25%, transparent 25%),
+    linear-gradient(225deg, #266dde 25%, transparent 25%),
+    linear-gradient(45deg, #266dde 25%, transparent 25%),
+    linear-gradient(315deg, #266dde 25%, #4189ff 25%);
+  background-position: 39px 0, 39px 0, 0 0, 0 0;
+  background-size: 78px 78px;
+  background-repeat: "repeat";
+}
