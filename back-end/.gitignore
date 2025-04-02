@@ -1,0 +1,7 @@
+echo "db/
+back-end/db/
+back-end/back-end/db/
+WiredTiger.lock
+node_modules/
+.env
+" > .gitignore
