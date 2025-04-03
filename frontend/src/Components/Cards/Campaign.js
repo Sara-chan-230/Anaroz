@@ -1,51 +1,58 @@
-import NavSection from "../Sections/News/NavSection";
 const Campaign = () => {
   return (
-    <div className="flex flex-col items-center gap-10 justify-center">
-      <div className="w-[300px] h-[450px] flex flex-col items-center rounded-2xl shadow-lg relative">
-        <span className="absolute w-[150px] flex items-center justify-center h-[150px] top-[-10px] left-[-10px]  overflow-hidden">
-          <span className="w-[150%] absolute h-[40px] z-10 bg-secondary -rotate-45 translate-y-[-20px] translate-x-[-20px] flex items-center justify-center shadow-[0_5px_10px_rgba(0,0,0,0.05)] text-white ">
-            Education
+    <div className="flex flex-col items-center justify-center">
+      <div className="w-[260px] h-[390px] flex flex-col items-center rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.1)] relative hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+        {/* Ribbon */}
+        <span className="absolute w-[140px] flex items-center justify-center h-[140px] top-[-12px] left-[-12px] overflow-hidden">
+          <span className="w-[150%] absolute h-[38px] z-10 bg-secondary -rotate-45 translate-y-[-20px] translate-x-[-20px] flex items-center justify-center shadow-md text-white text-xs font-medium">
+           Developpement
           </span>
-          <span className="absolute w-[10px] h-[10px] bottom-[12px] -z-10 left-0 bg-primaryLight"></span>
-          <span className="absolute w-[10px] h-[10px] top-0 -z-10 right-[12px] bg-primaryLight"></span>
+          <span className="absolute w-[12px] h-[12px] bottom-[14px] -z-10 left-0 bg-primaryLight"></span>
+          <span className="absolute w-[12px] h-[12px] top-0 -z-10 right-[14px] bg-primaryLight"></span>
         </span>
-        <div className="h-[50%] w-full relative">
+
+        {/* Image Section */}
+        <div className="h-[48%] w-full relative">
           <img
-            className="w-full h-full rounded-tl-2xl rounded-tr-2xl "
+            className="w-full h-full rounded-tl-xl rounded-tr-xl object-cover"
             src={require("../../Assets/Images/about/earthquake.webp")}
-            alt=""
+            alt="Campaign"
           />
-          <div className="w-[60px] h-[60px] flex items-center justify-center absolute bottom-[10px] right-[10px] rounded-full border border-white">
-            <div className="w-[50px] h-[50px] flex items-center justify-center rounded-full text-sm font-semibold bg-white text-secondary">
+          <div className="w-[54px] h-[54px] flex items-center justify-center absolute bottom-[12px] right-[12px] rounded-full border-2 border-white">
+            <div className="w-[46px] h-[46px] flex items-center justify-center rounded-full text-xs font-semibold bg-white text-secondary">
               80%
             </div>
           </div>
         </div>
-        <div className="w-[90%] h-[50%] flex flex-col justify-center items-center gap-5">
-          <div className="flex flex-col gap-2">
-            <h1 className="font-semibold">
+
+        {/* Content Section */}
+        <div className="w-[90%] h-[52%] flex flex-col justify-center items-center gap-3 py-2">
+          <div className="flex flex-col gap-2 w-full">
+            <h1 className="font-semibold text-[13px] leading-tight">
               Homes of Hope – Rebuilding Lives Together
             </h1>
-            <p className="text-[10px]">
-              To provide permanent housing solutions for displaced families
-              while fostering a sense of unity and purpose...
+            <p className="text-[11px] leading-snug text-gray-600">
+              To provide permanent housing solutions for displaced families while...
             </p>
           </div>
-          <div className="relative w-full h-[10px]">
-            <div className="h-full w-full bg-gray rounded-full"></div>
+
+          {/* Progress Bar */}
+          <div className="relative w-full h-[10px] mt-1">
+            <div className="h-full w-full bg-lightGray rounded-full"></div>
             <div className="h-full w-[80%] bg-secondary rounded-full absolute left-0 top-0"></div>
           </div>
-          <div className="flex gap-[5px] w-full">
-            <button className="w-[40%] rounded-[3px] border text-sm text-secondary border-secondary py-[8px]">
+
+          {/* Buttons */}
+          <div className="flex gap-2 w-full mt-2">
+            <button className="w-[40%] rounded-sm border text-xs font-medium text-secondary border-secondary py-[6px] hover:bg-secondary hover:text-white transition-colors">
               Donate
             </button>
-            <button className="w-[60%] rounded-[3px] border text-sm text-white bg-secondary py-[8px]">
-              view Campaign
+            <button className="w-[60%] rounded-sm border text-xs font-medium text-white bg-secondary py-[6px] hover:bg-secondary-dark transition-colors">
+              View Campaign
             </button>
           </div>
         </div>
-          </div>
+      </div>
     </div>
   );
 };

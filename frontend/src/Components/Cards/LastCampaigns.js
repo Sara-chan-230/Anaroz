@@ -5,7 +5,7 @@ const LastCampaigns = (props) => {
         <div className="relative w-fit">
           <img
             className="max-w-80 min-w-80 min-h-60 max-h-60 rounded-t-xl"
-            src={require("../../Assets/Images/home/249392.jpg")}
+            src={require("../../Assets/Images/home/Help.webp")}
             alt=""
           />
           <div className="rounded-t-xl p-5 flex justify-end absolute w-full h-full top-0 left-0 bg-[#00000066]">

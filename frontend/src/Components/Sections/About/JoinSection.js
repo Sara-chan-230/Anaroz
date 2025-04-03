@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+
 const JoinSection = () => {
   return (
     <div className="h-screen flex justify-center items-center bg-lightBg overflow-hidden relative">

@@ -1,6 +1,9 @@
+import { Button } from "@mui/material";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
 const HeroSection = () => {
   return (
-    <header className="flex flex-col w-screen justify-center pt-28 items-center relative">
+    <header className="flex flex-col gap-14 w-screen justify-center pt-28 items-center relative">
       <div className="absolute top-0 h-auto left-0 right-0 -z-20">
         <svg
           width="100%"
@@ -74,10 +77,20 @@ const HeroSection = () => {
           <span className="md:text-2xl text-sm italic"> in Someone's Life</span>
         </h1>
 
-        <button className="inline-block px-5 md:px-10 md:py-3 py-2 font-bold bg-primary text-center text-white align-middle transition-all duration-300 ease-in-out rounded-full leading-pro text-xs hover:bg-gray hover:text-black hover:scale-105 hover:shadow-lg">
-          <i className="fa-solid fa-play mr-2"></i>
+        <Button
+          variant="contained"
+          size="large"
+          startIcon={<PlayArrowIcon />}
+          sx={{
+            borderRadius: "999px", 
+            fontWeight: "bold",
+            textTransform: "none",
+            boxShadow : "none" ,
+            background : "#063751"
+          }}
+        >
           Watch Video
-        </button>
+        </Button>
       </div>
 
       <div className="flex lg:space-x-20 md:space-x-5 space-x-3 pb-5">
@@ -105,6 +118,33 @@ const HeroSection = () => {
             className="lg:h-64 md:w-56 w-24 absolute right-0 bottom-0 z-10"
           />
         </div>
+      </div>
+      <div className="h-32 w-full flex justify-center items-center gap-10 bg-lightBg ">
+        <img
+          className="w-40 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/Populaire-Banque.png")}
+          alt=""
+        />
+        <img
+          className="w-40 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/Bank-of-Africa.png")}
+          alt=""
+        />
+        <img
+          className="w-24 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/Doctors-without-borders.png")}
+          alt=""
+        />
+        <img
+          className="w-40 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/lesieur-cristal.png")}
+          alt=""
+        />
+        <img
+          className="w-32 grayscale"
+          src={require("../../../Assets/Images/Logo/Sponsors/ciments-du-Maroc.png")}
+          alt=""
+        />
       </div>
     </header>
   );

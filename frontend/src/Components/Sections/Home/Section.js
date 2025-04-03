@@ -1,6 +1,7 @@
 import collaboration from "../../../Assets/Images/home/join.webp";
 import volunteer from "../../../Assets/Images/home/Volunteers.webp";
 import Solidarity from "../../../Assets/Images/home/solid.webp";
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 
 const Section = () => {
   return (
@@ -31,7 +32,7 @@ const Section = () => {
           <div className="h-[40%] w-[40%] bg-indigo-400 rounded-tr-full absolute bottom-0 left-0"></div>
           <div className="h-20 w-20 rounded-full flex justify-center items-center z-10 bg-white absolute -left-[44px] -bottom-[44px]">
             <div className="h-[60%] w-[60%] rounded-full bg-green-500 flex items-center justify-center">
-              <i className="fa-solid fa-play text-xl text-white"></i>
+              <PlayArrowRoundedIcon sx={{color : "white"}} />
             </div>
           </div>
           <div className="absolute top-[-10%] right-[-10%] w-[60px] h-[60px] rounded-full bg-gradient-to-t from-teal-400 to-blue-500 opacity-60"></div>

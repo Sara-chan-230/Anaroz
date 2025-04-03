@@ -40,7 +40,7 @@ const LeftBar = () => {
         <ListItemIcon>
         <HouseRoundedIcon />
         </ListItemIcon>
-        <ListItemText primary="Sent mail" />
+        <ListItemText primary="Home" />
       </ListItemButton>
       <ListItemButton>
         <ListItemIcon>

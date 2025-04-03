@@ -8,9 +8,7 @@ const Card = (props) => {
       <div className="w-[90%] group-hover:h-[90%] h-[35%] bg-white flex flex-col justify-between mt-auto mb-[5%] items-center rounded-xl relative transition-all duration-500 ease-in-out">
         <div className="group-hover:bg-primaryLight bg-white w-[100%] h-full group-hover:h-1/2 flex flex-col gap-5 justify-center items-center rounded-xl absolute top-0 transition-all duration-500 ease-in-out">
           <div className="lg:w-28 w-20 h-20 group-hover:w-fit group-hover:h-fit lg:h-28 flex items-center justify-center border-2 border-primaryLight bg-white group-hover:border-transparent group-hover:bg-transparent rounded-full transition-all duration-500 ease-in-out absolute lg:-top-[56px] -top-[40px] group-hover:relative group-hover:top-0">
-            <i
-              className={`${props.icon} lg:text-4xl text-2xl text-primaryLight group-hover:text-white transition-all duration-500 ease-in-out`}
-            ></i>
+            {props.icon}
           </div>
           <h1 className="lg:text-lg font-semibold group-hover:text-white transition-all duration-500 ease-in-out">
             {props.title}

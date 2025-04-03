@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import solide from "../../../Assets/Images/home/Solidarity.webp";
 import volunteer from "../../../Assets/Images/home/Volunteer.webp";
 
@@ -17,9 +18,11 @@ const SupporterSection = () => {
           Volunteer or donate to support communities in need. Together, we can
           rebuild lives and bring hope where it's needed most.
         </p>
+        <Link to="campaigns">
         <button className="w-fit text-xs inline-block px-10 py-3 lg:text-lg bg-primaryLight text-center text-white align-middle transition-all rounded-lg cursor-pointer leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-110 hover:rotate-2 hover:bg-secondary hover:shadow-lg active:opacity-85">
           Help Now
         </button>
+        </Link>
       </div>
 
       <div className="md:w-[55%] w-[90%] flex md:gap-10 gap-5 md:items-start items-center justify-center z-10">

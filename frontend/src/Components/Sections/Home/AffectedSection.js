@@ -1,5 +1,6 @@
 import piece from "../../../Assets/Images/home/Help.webp";
 import hope from "../../../Assets/Images/home/piece.webp";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 const AffectedSection = () => {
@@ -64,9 +65,11 @@ const AffectedSection = () => {
           Our team is ready to help, and our interactive map provides real-time
           updates and support locations.
         </p>
-        <button className="w-fit text-xs inline-block px-10 py-3 lg:text-lg bg-primaryLight text-center text-white align-middle transition-all rounded-lg cursor-pointer leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-110 hover:rotate-2 hover:bg-secondary hover:shadow-lg active:opacity-85">
-          Join us
-        </button>
+        <Link to="signup">
+          <button className="w-fit text-xs inline-block px-10 py-3 lg:text-lg bg-primaryLight text-center text-white align-middle transition-all rounded-lg cursor-pointer leading-pro ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-110 hover:rotate-2 hover:bg-secondary hover:shadow-lg active:opacity-85">
+            Join us
+          </button>
+        </Link>
       </div>
     </div>
   );

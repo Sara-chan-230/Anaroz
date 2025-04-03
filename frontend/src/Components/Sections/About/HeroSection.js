@@ -1,5 +1,8 @@
 import flood from "../../../Assets/Images/about/floods.webp";
 import earthquake from "../../../Assets/Images/about/earthquake.webp";
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import ThumbUpRoundedIcon from '@mui/icons-material/ThumbUpRounded';
+import SentimentSatisfiedRoundedIcon from '@mui/icons-material/SentimentSatisfiedRounded';
 const HeroSection = () => {
   return (
     <header className="flex flex-col gap-14">
@@ -116,13 +119,14 @@ const HeroSection = () => {
                   Help them
                 </p>
                 <button className="rounded-full w-10 h-10 bg-secondary">
-                  <i className="fa-solid fa-arrow-right"></i>
+                  <ArrowForwardRoundedIcon />
                 </button>
               </div>
             </div>
             <div className="w-52 h-20 flex items-center  rounded-2xl bg-black">
-              <p className="text-base text-center w-full text-white ">
-                <i className="fa-regular pr-3 fa-face-smile text-white"></i>
+              <p className="text-sm font-semibold text-center w-full text-white ">
+                <SentimentSatisfiedRoundedIcon />
+                {"  "}
                 We need your help
               </p>
             </div>
@@ -147,7 +151,7 @@ const HeroSection = () => {
               </p>
               <div className="rounded-full h-1/6 p-2 md:pr-6 pr-4 flex flex-row items-center justify-between  bg-gray w-full">
                 <button className="rounded-full md:w-8 w-6 md:h-8 h-6 bg-black">
-                  <i className="fa-solid fa-arrow-right text-white"></i>
+                  <ArrowForwardRoundedIcon sx={{color: "white"}} />
                 </button>
                 <p className=" md:w-4/5 text-center md:text-base text-xs">
                   Join us
@@ -180,7 +184,7 @@ const HeroSection = () => {
 
               <div className="rounded-full h-1/5 p-2  flex flex-row items-center justify-between  bg-secondary w-full">
                 <button className="rounded-full w-10 h-10 bg-sky-800">
-                  <i className="fa-solid fa-arrow-right"></i>
+                  <ArrowForwardRoundedIcon />
                 </button>
                 <p className="text-white text-base w-4/5 text-center">
                   Explore more
@@ -188,8 +192,9 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="w-52 h-20 flex items-center  rounded-2xl bg-[#273B4A]">
-              <p className="text-base text-center w-full text-white ">
-                <i className="fa-regular fa-thumbs-up pr-3 text-white"></i>
+              <p className="text-sm font-semibold text-center w-full text-white ">
+                <ThumbUpRoundedIcon className="" />
+                {"  "}
                 We Are Here For You
               </p>
             </div>
