@@ -1,4 +1,6 @@
 import React from "react";
+import Hiba from "../../../Assets/Images/about/Our Team/Elharda-Hiba.webp";
+import Sara from "../../../Assets/Images/about/Our Team/imag.jpg";
 import image from "../../../Assets/Images/about/girl.jpg";
 
 const OurTeamSection = () => {
@@ -11,9 +13,9 @@ const OurTeamSection = () => {
       <div className="flex justify-center lg:gap-14 gap-5 flex-wrap">
         <div className="flex flex-col gap-2 md:w-[30%] w-[90%]">
           <div
-            className="clip5 h-96 bg-gray bg-center bg-cover"
+            className="clip5 h-96 bg-gray bg-center bg-cover grayscale"
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${Hiba})`,
             }}
           ></div>
           <div>
@@ -23,9 +25,9 @@ const OurTeamSection = () => {
         </div>
         <div className="flex flex-col gap-2 md:w-[30%] w-[90%]">
           <div
-            className="clip5 h-96 bg-gray bg-center bg-cover"
+            className="clip5 h-96 bg-gray bg-center grayscale bg-cover"
             style={{
-              backgroundImage: `url(${image})`,
+              backgroundImage: `url(${Sara})`,
             }}
           ></div>
           <div>
@@ -35,7 +37,7 @@ const OurTeamSection = () => {
         </div>
         <div className="flex flex-col gap-2 md:w-[30%] w-[90%]">
           <div
-            className="clip5 h-96 bg-gray bg-center bg-cover"
+            className="clip5 grayscale h-96 bg-gray bg-center bg-cover"
             style={{
               backgroundImage: `url(${image})`,
             }}

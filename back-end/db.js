@@ -1,16 +1,15 @@
-const mongoose = require("mongoose");
+import { connect } from "mongoose";
 
 const connectDB = async () => {
-    try {
-        await mongoose.connect(process.env.MONGO_URI, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
-        console.log("MongoDB connecté avec succès !");
-    } catch (error) {
-        console.error("Erreur de connexion à MongoDB :", error);
-        process.exit(1);
-    }
+  try {
+    await connect(
+      "mongodb+srv://salamasara949:JsO5RFl04Vg2aaIR@anraozcluster.jzitrar.mongodb.net/?retryWrites=true&w=majority&appName=AnraozCluster"
+    );
+    console.log("MongoDB connecté avec succès !");
+  } catch (error) {
+    console.error("Erreur de connexion à MongoDB :", error);
+    process.exit(1);
+  }
 };
 
-module.exports = connectDB;
+export default connectDB;

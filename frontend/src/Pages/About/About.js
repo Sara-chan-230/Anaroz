@@ -9,7 +9,6 @@ import OurTeamSection from "../../Components/Sections/About/OurTeamSection";
 
 import {
   scrollScaleIn,
-  scrollParallax,
   scrollFlip,
   scrollBounce,
 } from "../../Animations/ScrollAnimation";
@@ -20,7 +19,7 @@ const About = () => {
   }, []);
 
   return (
-    <div className="pt-28 flex flex-col gap-48">
+    <div className="pt-28 flex flex-col gap-60">
       <HeroSection />
 
       <UsersSection />
@@ -36,14 +35,7 @@ const About = () => {
         <JoinSection />
       </motion.div>
 
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ margin: "-50px" }}
-        variants={scrollParallax}
-      >
-        <WhyChooseUs />
-      </motion.div>
+      <WhyChooseUs />
 
       <div></div>
 

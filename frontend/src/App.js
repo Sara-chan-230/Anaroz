@@ -14,6 +14,8 @@ import Overview from "./Components/Sections/Organization/Overview.js";
 import CampaignsPage from "./Components/Sections/Organization/CampaingsPage.js";
 import SettingsPage from "./Components/Sections/Organization/SettingsPage.js";
 import OrgLogin from "./Components/Sections/Organization/OrgLogin.js";
+import CampaignPage from "./Pages/CampaignPage/CampaignPage.js";
+import NotFound from "./Pages/NotFound.js";
 
 function App() {
   const locations = [
@@ -116,6 +118,8 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/blogs" element={<Blogs />} />
                 <Route path="/campaigns" element={<Campaigns />} />
+                <Route path="/campaignsPage" element={<CampaignPage />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
               <Footer />
             </>

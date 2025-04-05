@@ -27,17 +27,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-48">
+    <div className="flex flex-col gap-64">
       <HeroSection />
 
-      <motion.div
-        initial="offscreen"
-        whileInView="onscreen"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={scrollSlideUp}
-      >
         <Section />
-      </motion.div>
+
 
       <motion.div
         initial="offscreen"
@@ -77,6 +71,8 @@ const Home = () => {
       >
         <NewsSection />
       </motion.div>
+
+      <div></div>
 
       <motion.div
         initial="offscreen"
