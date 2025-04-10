@@ -1,5 +1,0 @@
-# Ignorer les fichiers de la base de données MongoDB
-db/
-back-end/db/
-back-end/back-end/db/
-WiredTiger.lock

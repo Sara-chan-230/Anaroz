@@ -1,14 +1,19 @@
 const express = require('express');
-const app = express();
-const authRoutes = require('./routes/authRoutes');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const authRoutes = require('./routes/authRoutes'); // adapte le chemin si besoin
 
-// Middleware pour parser les données JSON
+const app = express();
+app.use(cors());
 app.use(express.json());
 
-// Utiliser la route d'authentification
+mongoose.connect('mongodb://127.0.0.1:27017/anaroz')
+  .then(() => console.log("Connexion à MongoDB réussie !"))
+  .catch(err => console.error(err));
+
 app.use('/api/auth', authRoutes);
 
-// Lancer le serveur
-app.listen(5000, () => {
-  console.log('Serveur actif sur http://localhost:5000');
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Serveur actif sur http://localhost:${PORT}`);
 });

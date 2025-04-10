@@ -71,5 +71,3 @@ exports.signin = (req, res) => {
       });
   });
 };
-
-
