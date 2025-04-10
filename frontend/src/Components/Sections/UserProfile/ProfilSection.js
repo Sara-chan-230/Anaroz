@@ -4,8 +4,8 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
-
-  
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfilSection = () => {
   const VisuallyHiddenInput = styled("input")({
@@ -19,14 +19,30 @@ const ProfilSection = () => {
     width: 1,
   });
 
+  const handleDeleteAvatar = () => {
+    toast.success('Avatar deleted successfully!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    
+    // Add your actual avatar deletion logic here
+    console.log("Avatar deleted");
+  };
+
   return (
     <div className="relative w-full mt-24 flex flex-col gap-4 items-center justify-center bg-white pt-10 pb-6 px-6 rounded-md overflow-hidden">
+      <ToastContainer />
       <Avatar
         sx={{ bgcolor: "#ba68c8", width: 100, height: 100 }}
         alt="Hope Bird"
         src={require("../../../Assets/Images/about/Testimonial/Yassmin-haddad.webp")}
       />
-
 
       {/* User Info */}
       <div className="flex flex-col items-center gap-1">
@@ -50,7 +66,6 @@ const ProfilSection = () => {
       <div className="gap-2 justify-center items-center flex w-full max-w-xs text-center relative z-10">
         <div>
           <span className="block text-lg font-semibold">80</span>
-      
           <span className="text-xs">Contributions</span>
         </div>
         <Divider orientation="vertical" flexItem />
@@ -84,11 +99,11 @@ const ProfilSection = () => {
           variant="outlined"
           className="border-red-500 text-red-500 hover:bg-red-50"
           startIcon={<DeleteIcon />}
+          onClick={handleDeleteAvatar}
         >
           Delete Avatar
         </Button>
       </div>
-     
     </div>
   );
 };

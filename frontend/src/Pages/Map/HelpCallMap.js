@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
-import ReportProblemRoundedIcon from "@mui/icons-material/ReportProblemRounded";
 import Button from "@mui/material/Button";
 import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getHelpCalls } from "../../Redux/APICalls/mapCall";
 
 const getDegreeColor = (degree) => {
   switch (degree) {
@@ -23,13 +24,17 @@ const HelpCallMap = ({ locations }) => {
   const [center, setCenter] = useState([34.020882, -6.84165]);
   const [zoom, setZoom] = useState(10);
   const navigate = useNavigate();
+  const {helpCalls} = useSelector((state)=>state.helpCalls);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getHelpCalls())
     if (locations.length > 0) {
+
       const firstLocation = locations[0];
       setCenter([firstLocation.lat, firstLocation.lng]);
     }
-  }, [locations]);
+  }, [locations, helpCalls]);
 
   return (
     <div style={{ position: "relative" }}>

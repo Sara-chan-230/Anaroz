@@ -1,8 +1,8 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Navbar from "./Components/Common/Navbar/Navbar.js";
 import Home from "./Pages/Home/Home";
 import About from "./Pages/About/About";
-import Blogs from "./Pages/Blogs/Blogs";
 import Campaigns from "./Pages/Campaigns/Campaings.js";
 import Footer from "./Components/Common/Footer/Footer.js";
 import Signinup from "./Pages/Signin-Signup/Signinup.js";
@@ -14,8 +14,10 @@ import Overview from "./Components/Sections/Organization/Overview.js";
 import CampaignsPage from "./Components/Sections/Organization/CampaingsPage.js";
 import SettingsPage from "./Components/Sections/Organization/SettingsPage.js";
 import OrgLogin from "./Components/Sections/Organization/OrgLogin.js";
+import PostPage from "./Components/Sections/Organization/PostPage.js";
 import CampaignPage from "./Pages/CampaignPage/CampaignPage.js";
 import NotFound from "./Pages/NotFound.js";
+import BuyHope from "./Components/Sections/UserProfile/BuyHope.js";
 
 function App() {
   const locations = [
@@ -90,21 +92,32 @@ function App() {
     },
   ];
 
+  const { user } = useSelector((state) => state.auth);
   return (
     <div className="overflow-hidden">
       <Routes>
-        <Route path="/signup" element={<Signinup />} />
-        <Route path="/news" element={<New />} />
+        <Route
+          path="/signup"
+          element={!user ? <Signinup /> : <Navigate to="/" />}
+        />
+        <Route path="/buyhope" element ={user ? <BuyHope /> : <Navigate to="/signup"/>} />
+        <Route path="/news" element={user ? <New /> : <Navigate to="/" />} />
 
-        <Route path="/organization" element={<Organization />}>
+        <Route
+          path="/organization"
+          element={user ? <Organization /> : <Navigate to="/" />}
+        >
           <Route index element={<Overview />} />
           <Route path="overview" element={<Overview />} />
           <Route path="campaigns" element={<CampaignsPage />} />
           <Route path="settings" element={<SettingsPage />} />
+          <Route path="posts" element={<PostPage />} />
         </Route>
-        <Route path="login" element={<OrgLogin />} />
+        <Route
+          path="login"
+          element={!user ? <OrgLogin /> : <Navigate to="/" />}
+        />
 
-        <Route path="/profile" element={<UerProfile />} />
         <Route path="/map" element={<HelpCallMap locations={locations} />} />
 
         {/* General Routes */}
@@ -116,10 +129,16 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/blogs" element={<Blogs />} />
                 <Route path="/campaigns" element={<Campaigns />} />
-                <Route path="/campaignsPage" element={<CampaignPage />} />
+                <Route
+                  path="/campaigns/details/:id"
+                  element={<CampaignPage />}
+                />
                 <Route path="*" element={<NotFound />} />
+                <Route
+                  path="/profile/:id"
+                  element={user ? <UerProfile /> : <Navigate to="/" />}
+                />
               </Routes>
               <Footer />
             </>

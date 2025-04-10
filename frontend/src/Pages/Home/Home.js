@@ -9,10 +9,10 @@ import DonationSection from "../../Components/Sections/Home/DonationSection";
 import AboutSection from "../../Components/Sections/Home/AboutSection";
 import SupporterSection from "../../Components/Sections/Home/SupporterSection";
 import Section from "../../Components/Sections/Home/Section";
+import LastCampaigns from "../../Components/Cards/LastCampaigns";
 
 // Import scroll variants
 import {
-  scrollSlideUp,
   scrollSlideLeft,
   scrollScaleIn,
   scrollParallax,
@@ -93,6 +93,8 @@ const Home = () => {
       >
         <SupporterSection />
       </motion.div>
+
+      <LastCampaigns />
     </div>
   );
 };

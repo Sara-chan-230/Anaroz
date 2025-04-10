@@ -1,11 +1,13 @@
-const Campaign = () => {
+import { Link } from "react-router-dom";
+
+const Campaign = ({ campaign }) => {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="w-[260px] h-[390px] flex flex-col items-center rounded-xl shadow-[0px_4px_10px_rgba(0,0,0,0.1)] relative hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
         {/* Ribbon */}
         <span className="absolute w-[140px] flex items-center justify-center h-[140px] top-[-12px] left-[-12px] overflow-hidden">
           <span className="w-[150%] absolute h-[38px] z-10 bg-secondary -rotate-45 translate-y-[-20px] translate-x-[-20px] flex items-center justify-center shadow-md text-white text-xs font-medium">
-           Developpement
+            Developpement
           </span>
           <span className="absolute w-[12px] h-[12px] bottom-[14px] -z-10 left-0 bg-primaryLight"></span>
           <span className="absolute w-[12px] h-[12px] top-0 -z-10 right-[14px] bg-primaryLight"></span>
@@ -31,8 +33,11 @@ const Campaign = () => {
             <h1 className="font-semibold text-[13px] leading-tight">
               Homes of Hope – Rebuilding Lives Together
             </h1>
-            <p className="text-[11px] leading-snug text-gray-600">
-              To provide permanent housing solutions for displaced families while...
+            <p className="text-[11px] leading-snug text-gray-600 line-clamp-1">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fuga rem
+              ipsum eligendi itaque nostrum fugiat, tempore laudantium, quod
+              optio quia explicabo magni nulla iste inventore temporibus error
+              necessitatibus libero voluptates?
             </p>
           </div>
 
@@ -47,7 +52,7 @@ const Campaign = () => {
             <button className="w-[40%] rounded-sm border text-xs font-medium text-secondary border-secondary py-[6px] hover:bg-secondary hover:text-white transition-colors">
               Donate
             </button>
-            <button className="w-[60%] rounded-sm border text-xs font-medium text-white bg-secondary py-[6px] hover:bg-secondary-dark transition-colors">
+            <button className="w-[60%] rounded-[3px] border text-xs font-medium text-white bg-secondary py-[6px] hover:bg-secondary-dark transition-colors">
               View Campaign
             </button>
           </div>

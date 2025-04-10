@@ -1,5 +1,5 @@
-import hope from "../../../Assets/Images/home/hope1.webp";
-import donation from "../../../Assets/Images/home/donate.webp";
+import hope from "../../../Assets/Images/register/hope.webp";
+import donation from "../../../Assets/Images/register/volunteer.webp";
 import { Link } from "react-router-dom";
 const MapSection = () => {
   return (

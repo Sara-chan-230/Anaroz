@@ -3,7 +3,7 @@ import Drawer from "@mui/material/Drawer";
 import AboutCampaign from "./AboutCampaign";
 import { Button } from "@mui/material";
 
-const Campaign = () => {
+const Campaign = (campaign) => {
   const [open, setOpen] = useState(false);
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);

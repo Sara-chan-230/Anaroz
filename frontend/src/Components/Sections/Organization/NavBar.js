@@ -11,8 +11,10 @@ import CampaignIcon from "@mui/icons-material/Campaign";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import SettingsIcon from "@mui/icons-material/Settings";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavBar = () => {
+  const {org} = useSelector((state)=>state.orgauth);
   return (
     <Drawer
       sx={{

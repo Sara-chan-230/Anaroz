@@ -4,9 +4,16 @@ import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { TextField, InputAdornment } from "@mui/material";
+import { TextField} from "@mui/material";
+import { useState } from "react";
 
 const SettingsPage = () => {
+  const [orgInfo, setOrgInfo] = useState({
+    orgName: "",
+    phone: "",
+    email: "",
+    about: "",
+  });
   const VisuallyHiddenInput = styled("input")({
     clipPath: "inset(50%)",
     height: 1,
@@ -18,8 +25,12 @@ const SettingsPage = () => {
     width: 1,
   });
 
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+  }
+
   return (
-    <div className="flex  mt-24 ml-[15%] p-4 gap-4">
+    <div className="flex  mt-24 ml-[15%] p-8 gap-4">
       <div className="relative w-[40%] border border-gray flex flex-col gap-4 items-center justify-center bg-white pt-10 pb-6 px-6 rounded-md overflow-hidden">
         <Avatar
           sx={{ bgcolor: "#ba68c8", width: 100, height: 100 }}
@@ -78,14 +89,21 @@ const SettingsPage = () => {
       </div>
       <div className="flex flex-col gap-6 w-[60%]  p-8 border border-gray rounded-md">
         <h2 className="text-2xl font-semibold ">Edit Your Profile</h2>
-        <form className="grid gap-6">
-          
-
+        <form
+          onSubmit={(e) => {
+            handleSubmit(e);
+          }}
+          className="grid gap-6"
+        >
           <TextField
             fullWidth
             label="Name"
             size="small"
             variant="outlined"
+            value={orgInfo.orgName}
+            onChange={(e) => {
+              setOrgInfo({ ...orgInfo, orgName: e.target.value });
+            }}
           />
           <TextField
             fullWidth
@@ -93,6 +111,10 @@ const SettingsPage = () => {
             size="small"
             type="tel"
             variant="outlined"
+            value={orgInfo.phone}
+            onChange={(e) => {
+              setOrgInfo({ ...orgInfo, phone: e.target.value });
+            }}
           />
           <TextField
             fullWidth
@@ -100,17 +122,25 @@ const SettingsPage = () => {
             size="small"
             type="email"
             variant="outlined"
+            value={orgInfo.email}
+            onChange={(e) => {
+              setOrgInfo({ ...orgInfo, email: e.target.value });
+            }}
           />
 
-          <TextField label="Description" fullWidth multiline rows={4} />
+          <TextField
+            label="Description"
+            fullWidth
+            multiline
+            rows={4}
+            value={orgInfo.about}
+            onChange={(e) => {
+              setOrgInfo({ ...orgInfo, about: e.target.value });
+            }}
+          />
 
-          <Button
-            variant="contained"
-            className="bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700"
-          >
-            Save Changes
-          </Button>
-        </form>{" "}
+          <button className="bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700">Save Changes</button>
+        </form>
       </div>
     </div>
   );

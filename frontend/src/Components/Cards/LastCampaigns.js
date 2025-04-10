@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-const LastCampaigns = (props) => {
+const LastCampaigns = () => {
   return (
       <div className="flex flex-col gap-3 w-80 rounded-xl shadow-lg pb-3">
         <div className="relative w-fit">

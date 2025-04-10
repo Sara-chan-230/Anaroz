@@ -152,13 +152,6 @@ const CampaignsList = () => {
           }}
         >
           <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
         </Box>
       </Container>
     </div>

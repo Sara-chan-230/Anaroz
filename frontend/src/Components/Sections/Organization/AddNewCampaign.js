@@ -1,18 +1,35 @@
-import { TextField, InputAdornment } from '@mui/material';
+import { TextField, InputAdornment } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import Switch from "@mui/material/Switch";
+import {CircularProgress} from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { CreateCampaign } from "../../../Redux/APICalls/campaignsCall";
+import { toast, ToastContainer } from "react-toastify";
 
 const AddNewCampaign = () => {
   const [category, setcategory] = useState("");
+  const [cTitle, setCTitle] = useState("");
+  const [cBudjet, setCBudjet] = useState(null);
+  const [maxVolunteers, setMaxVolunteers] = useState(null);
   const [fileName, setFileName] = useState("");
+  const [image, setImage] = useState(null);
   const [isVolunteering, setIsVolunteering] = useState(false);
+  const [cDescription, setCDescription] = useState("");
+  const dispatch = useDispatch;
+  const { isCampaignCreated, loading } = useSelector(
+    (state) => state.campaigns
+  );
+  const {org} = useSelector((state)=>state.orgauth);
+
+
   const handleFileChange = (event) => {
     const file = event.target.files[0];
+    setImage(event.target.file[0]);
     if (file) {
       setFileName(file.name);
     }
@@ -25,22 +42,57 @@ const AddNewCampaign = () => {
   const handleToggle = () => {
     setIsVolunteering((prev) => !prev);
   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(cTitle.trim()==="") return toast.error("the title is required");
+    if(cBudjet === null) return toast.error("the Budjet is Required");
+    if(cDescription == "") return toast.error("the description is required");
+    if(image == null) return toast.error("the Image is Required ")
+    dispatch(
+      CreateCampaign({category :  category, Title : cTitle, budjet :  cBudjet, description:  cDescription, cImage : image, maxVolunteers :  maxVolunteers, organizationId : org.id })
+    )
+  };
+
+  useEffect(() => {
+  }, [isCampaignCreated]);
   return (
-    <form className="mt-5 w-[450px] flex flex-col gap-6">
-      <TextField label="Campaign Title" size="small" fullWidth />
-      <TextField
-      label="Campaign Budget"
-      type="number"
-      size="small"
-      fullWidth
-      InputProps={{
-        startAdornment: (
-          <InputAdornment position="start">
-            <img src={require("../../../Assets/Images/Logo/Hope-piece.png")} alt="hope icon" style={{ width: 18, height: 18 }} />
-          </InputAdornment>
-        ),
+    <form
+      onSubmit={(e) => {
+        handleSubmit(e);
       }}
-    />
+      className="mt-5 w-[450px] flex flex-col gap-6"
+    >
+      <ToastContainer theme="colored" position="top-center" />
+      <TextField
+        label="Campaign Title"
+        size="small"
+        fullWidth
+        value={cTitle}
+        onChange={(e) => {
+          setCTitle(e.target.value);
+        }}
+      />
+      <TextField
+        value={cBudjet}
+        onChange={(e) => {
+          setCBudjet(e.target.value);
+        }}
+        label="Campaign Budget"
+        type="number"
+        size="small"
+        fullWidth
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <img
+                src={require("../../../Assets/Images/Logo/Hope-piece.png")}
+                alt="hope icon"
+                style={{ width: 18, height: 18 }}
+              />
+            </InputAdornment>
+          ),
+        }}
+      />
       <FormControl fullWidth size="small">
         <InputLabel>category</InputLabel>
         <Select
@@ -67,6 +119,10 @@ const AddNewCampaign = () => {
       </FormControl>
       <div className="flex items-center justify-center gap-3">
         <TextField
+          value={maxVolunteers}
+          onChange={(e) => {
+            setMaxVolunteers(e.target.value);
+          }}
           label="Max Volunteers"
           type="number"
           size="small"
@@ -102,7 +158,20 @@ const AddNewCampaign = () => {
 
         <input type="file" className="hidden" onChange={handleFileChange} />
       </label>
-      <TextField label="Description" fullWidth multiline rows={4} />
+      <TextField
+        value={cDescription}
+        onChange={(e) => {
+          setCDescription(e.target.value);
+        }}
+        label="Description"
+        fullWidth
+        multiline
+        rows={4}
+      />
+
+      <button className="w-full py-2 bg-primaryLight text-white rounded-md">
+        {loading ? <CircularProgress /> : "Create Campaign"}
+      </button>
     </form>
   );
 };

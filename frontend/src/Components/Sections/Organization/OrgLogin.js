@@ -5,13 +5,26 @@ import aid from "../../../Assets/Images/register/take-care.webp";
 import sunrise from "../../../Assets/Images/register/sunrise.webp";
 import donate from "../../../Assets/Images/register/donate.webp";
 import map from "../../../Assets/Images/register/map.webp";
+import { useDispatch } from "react-redux";
+import { loginOrg } from "../../../Redux/APICalls/orgauthCall";
+import { toast, ToastContainer } from "react-toastify";
+
+
 const YourComponent = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const [orgInfo,setOrgInfo] = useState({email : "" , password : ""});
+  const dispatch = useDispatch();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if(orgInfo.email === "") return toast.error("the email is Required");
+    if(orgInfo.password ==="") return toast.error("the password is Required")
+    dispatch(loginOrg(orgInfo));
+  }
   return (
     <div className="w-screen h-screen flex items-center justify-center bg-lightBg">
+      <ToastContainer theme="colored" position="top-center" />
       <div className="w-4/5 h-[90%] flex justify-between items-center overflow-hidden rounded-xl bg-white shadow-lg relative">
         <div className=" flex justify-center items-center w-[50%]">
-          <form className="w-[80%] flex flex-col gap-5 justify-center items-center">
+          <form onSubmit={(e)=>{handleSubmit(e)}} className="w-[80%] flex flex-col gap-5 justify-center items-center">
             <h1 className="text-2xl font-bold text-center">
               Log in to{" "}
               <Link
@@ -26,6 +39,8 @@ const YourComponent = () => {
                 type="email"
                 placeholder="Email Address"
                 className="w-full outline-none pl-2"
+                value = {orgInfo.email}
+                onChange={(e)=>{setOrgInfo({...orgInfo, email : e.target.value})}}
               />
             </div>
             <div className="w-full border border-zinc-400 rounded-md h-10 flex items-center">
@@ -33,6 +48,8 @@ const YourComponent = () => {
                 type="password"
                 placeholder="Password"
                 className="w-full outline-none pl-2"
+                value = {orgInfo.password}
+                onChange={(e)=>{setOrgInfo({...orgInfo, password: e.target.value})}}
               />
             </div>
             <a href="#" className="text-blue-600 font-bold">

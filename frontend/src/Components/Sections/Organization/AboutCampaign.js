@@ -10,12 +10,9 @@ import ShareIcon from "@mui/icons-material/Share";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import PersonIcon from "@mui/icons-material/Person";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
-import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
-import CancelOutlinedIcon from "@mui/icons-material/CancelOutlined";
 
-const AboutCampaign = () => {
+const AboutCampaign = (campaign) => {
   const [value, setValue] = useState("1");
   const [hasVolunteerApplications, setHasVolunteerApplications] =
     useState(true); 

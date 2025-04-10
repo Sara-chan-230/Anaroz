@@ -19,28 +19,20 @@ import {
   DialogContent,
   IconButton,
   Typography,
+  Chip, 
 } from "@mui/material";
 import PostPopup from "./PostPopup";
+import getPostTypeColor from "../../Utils/PostColor";
+
 
 const Post = () => {
-  // State and handlers remain the same
+  const color = getPostTypeColor("news");
   const [open, setOpen] = useState(false);
   const [likes, setLikes] = useState(12);
   const [liked, setLiked] = useState(false);
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      user: "John Doe",
-      text: "Lorem ipsum sit amet consectetur adipisicing elit. Maiores",
-      avatar: "J",
-    },
-    {
-      id: 2,
-      user: "Daniele joj",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores",
-      avatar: "D",
-    },
-  ]);
+  const [comments, setComments] = useState([]);
+
+
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const handleLike = (e) => {
@@ -59,26 +51,35 @@ const Post = () => {
           boxShadow: "none",
           borderRadius: 2,
           position: "relative",
-          overflow: "visible", // Changed to visible for ribbon
+          overflow: "visible",
         }}
         onClick={handleOpen}
       >
-        {/* <div className="">NEWS</div> */}
-
         <CardHeader
           avatar={<Avatar sx={{ bgcolor: "#ba68c8" }}>H</Avatar>}
           title="Hope Bird"
           subheader="Two days ago"
         />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </Typography>
+
+        <Chip
+          label="disaster"
+          sx={{
+            position: "absolute",
+            top: 10,
+            right: 10,
+            backgroundColor: {color},
+            color: "#fff",
+          }}
+        />
+
+        <CardContent sx={{padding : "20px"}}>
+          <h3 className="tet-sm mb-2 font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quisquam sapient</h3>
+          <p className="text-xs leading-snug line-clamp-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi veritatis eaque aspernatur perferendis tenetur odio expedita vitae, sint minima doloremque quae a consectetur placeat voluptatem laudantium tempora quo porro amet!</p>
         </CardContent>
         <CardMedia
           component="img"
           height="300"
-          image={require("../../../Assets/Images/about/earthquake.webp")}
+          image={require("../../Assets/Images/about/earthquake.webp")}
           alt="Post image"
         />
         <CardActions disableSpacing>
@@ -99,7 +100,6 @@ const Post = () => {
         </CardActions>
       </Card>
 
-      {/* Dialog remains unchanged */}
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogContent>
           <PostPopup />

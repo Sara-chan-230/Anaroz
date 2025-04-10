@@ -1,4 +1,4 @@
-import image from "../../../Assets/Images/home/sunrise.webp";
+import image from "../../../Assets/Images/register/sunrise.webp";
 
 const InvitationSection = () => {
   return (

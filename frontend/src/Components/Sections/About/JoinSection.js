@@ -81,7 +81,7 @@ const JoinSection = () => {
         animate={{ rotate: [4, -4, 4] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         className="lg:w-44 w-36 h-28 lg:h-40 sm:flex hidden grayscale absolute rounded-xl bottom-[10%] left-[15%] z-10"
-        src={require("../../../Assets/Images/about/sahara.jpg")}
+        src={require("../../../Assets/Images/about/sahara.webp")}
         alt=""
       />
     </div>

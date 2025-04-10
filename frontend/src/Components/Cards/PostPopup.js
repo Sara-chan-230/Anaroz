@@ -17,20 +17,7 @@ import { useState } from "react";
 const PostPopup = () => {
   const [likes, setLikes] = useState(12);
   const [liked, setLiked] = useState(false);
-  const [comments, setComments] = useState([
-    {
-      id: 1,
-      user: "John Doe",
-      text: "Lorem ipsum sit amet consectetur adipisicing elit. Maiores",
-      avatar: "J",
-    },
-    {
-      id: 2,
-      user: "Daniele joj",
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores",
-      avatar: "D",
-    },
-  ]);
+  const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
   const toggleLike = () => {
     setLiked(!liked);
@@ -71,24 +58,19 @@ const PostPopup = () => {
         </Box>
         <Chip label="News" color="secondary" size="small" />
       </Box>
-      {/* Post Content */}
       <Box sx={{ my: 3 }}>
-        <Typography variant="body1">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, nemo
-          esse.
-        </Typography>
+          <h3 className="tet-sm mb-2 font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quisquam sapient</h3>
+          <p className="text-xs leading-snug line-clamp-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi veritatis eaque aspernatur perferendis tenetur odio expedita vitae, sint minima doloremque quae a consectetur placeat voluptatem laudantium tempora quo porro amet!</p>
       </Box>
 
-      {/* Image */}
       <Box sx={{ width: "100%", mt: 2, mb: 3 }}>
         <img
           style={{ width: "100%", borderRadius: 8 }}
-          src={require("../../../Assets/Images/about/earthquake.webp")}
+          src={require("../../Assets/Images/about/earthquake.webp")}
           alt="Post"
         />
       </Box>
 
-      {/* Action Buttons */}
       <Box sx={{ display: "flex", gap: 3, alignItems: "center", py: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <IconButton onClick={toggleLike}>
@@ -114,7 +96,6 @@ const PostPopup = () => {
 
       <Divider />
 
-      {/* Comment Input */}
       <Box sx={{ display: "flex", gap: 2, alignItems: "center", mt: 3 }}>
         <TextField
           fullWidth

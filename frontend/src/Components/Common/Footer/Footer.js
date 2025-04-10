@@ -16,11 +16,13 @@ const Footer = () => {
         </div>
         <div className="w-fit flex flex-col justify-around">
           <div className="flex items-center">
+            <Link to="/">
             <img
               src={require("../../../Assets/Images/Logo/Anaroz.png")}
               alt=""
               className="md:w-24 w-16 pr-4"
             />
+            </Link>
             <div className="text-white border-l-2 h-full p-4 border-black ">
               <h1 className="md:text-3xl text-xl font-bold">Anaroz</h1>
               <p className="md:text-xs text-[10px] text-gray">
@@ -32,7 +34,7 @@ const Footer = () => {
             <a href="#">
               <i className="fa-brands fa-square-facebook text-white md:text-2xl"></i>
             </a>
-            <a href="#">
+            <a href="http/linkedin.com">
               <i className="fa-brands fa-linkedin text-white md:text-2xl"></i>
             </a>
             <a href="#">
@@ -99,13 +101,14 @@ const Footer = () => {
             </li>
             <li className="relative group w-fit md:text-base text-xs">
               <Link
-                to="/blogs"
-                className="transition-all duration-500 group-hover:text-secondary text-white"
+                to="/news"
+                className="transition-all duration-300 group-hover:text-secondary text-white"
               >
-                Blogs
+                News
                 <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-secondary transition-all duration-500 group-hover:w-full"></span>
               </Link>
             </li>
+
             <li className="relative group w-fit md:text-base text-xs">
               <Link
                 to="/map"
@@ -124,12 +127,5 @@ const Footer = () => {
 
 export default Footer;
 
-{
-  /* <i class="fa-brands fa-square-facebook"></i>; */
-}
-{
-  /* <i class="fa-brands fa-linkedin"></i>; */
-}
-{
-  /* <i class="fa-brands fa-x-twitter"></i>; */
-}
+
+
