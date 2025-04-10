@@ -53,6 +53,6 @@ const campaignSchema = new mongoose.Schema({
 }, { timestamps: true });  // Ajoute les timestamps `createdAt` et `updatedAt`
 
 // Créer le modèle à partir du schéma
-const Campaign = mongoose.model('Campaign', campaignSchema);
+const Campaign = mongoose.model('Compaigns', campaignSchema, 'Compaigns');
 
 module.exports = Campaign;
