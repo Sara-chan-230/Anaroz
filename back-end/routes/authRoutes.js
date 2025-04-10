@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { createAccount } = require('../controllers/authController');
+const authController = require('../controllers/authController');
 
-// Route pour la création d'un compte
-router.post('/createAccount', createAccount);
+// Route de création de compte
+router.post('/signup', authController.signup);
+router.post('/signin', authController.signin);
 
 module.exports = router;

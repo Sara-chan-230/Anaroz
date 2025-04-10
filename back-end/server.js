@@ -1,23 +1,14 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const authRoutes = require("./routes/authRoutes");
-
+const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const authRoutes = require('./routes/authRoutes');
 
-const MONGODB_URI =
-  "mongodb+srv://hibaelharda:3!-6avQEC6_Dmeb@cluster0.oyiqovf.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => console.log(" MongoDB Connected!"))
-  .catch((err) => {
-    console.error(" MongoDB Connection Error:", err);
-    process.exit(1);
-  });
-
+// Middleware pour parser les données JSON
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
-app.get("/", (req, res) => res.send("API en fonctionnement !"));
+// Utiliser la route d'authentification
+app.use('/api/auth', authRoutes);
 
-app.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));
+// Lancer le serveur
+app.listen(5000, () => {
+  console.log('Serveur actif sur http://localhost:5000');
+});
