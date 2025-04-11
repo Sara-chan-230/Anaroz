@@ -15,4 +15,4 @@ const userSchema = new mongoose.Schema({
   hope_piece: { type: Number } // Pièces d'espoir ou tout autre champ numérique
 });
 
-module.exports = mongoose.model('users', userSchema,'users');
+module.exports = mongoose.model('User', userSchema, 'users');

@@ -9,4 +9,6 @@ const organisationSchema = new mongoose.Schema({
   password: { type: String, required: true }
 });
 
-module.exports = mongoose.model('organisations', organisationSchema,'Organisations');
+module.exports = mongoose.model('Organisation', organisationSchema, 'Organisations');
+// Dans models/organisation.js
+mongoose.model('Organisation', organisationSchema, 'Organisations');

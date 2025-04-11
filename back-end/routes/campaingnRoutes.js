@@ -1,8 +1,9 @@
 // routes/campaignRoutes.js
 const express = require('express');
 const router = express.Router();
-const {getAllcompaign} = require('../controllers/CompaignController');
+const campaignController = require('../controllers/CompaignController');
 
-router.get('/campaigns', getAllcompaign);
-
+router.get('/', campaignController.getAllCampaigns);
+router.post('/', campaignController.createCampaign); // Nouvelle route pour la création
+router.get('/organisation/:organisationId', campaignController.getCampaignsByOrganisation);
 module.exports = router;

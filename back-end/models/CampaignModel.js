@@ -36,10 +36,11 @@ const campaignSchema = new mongoose.Schema({
     ref: 'Organisation', // Référence à l'organisation
     required: true,
   },
-  contributions: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Contribution', // Référence aux contributions de la campagne
-  }],
+  contributors: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: 'User',
+    default: []
+  },
   donors: [{
     donor_id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -47,7 +48,6 @@ const campaignSchema = new mongoose.Schema({
     },
     contribution_amount: {
       type: Number,
-      required: true,
     }
   }]
 }, { timestamps: true });  // Ajoute les timestamps `createdAt` et `updatedAt`

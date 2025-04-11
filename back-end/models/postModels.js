@@ -25,8 +25,7 @@ const postSchema = new mongoose.Schema({
   comments: [commentSchema], // Tableau de commentaires
   organisation_id: { 
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Organisation', // Référence à une organisation
-    required: true
+     required: true
   }
 });
 
