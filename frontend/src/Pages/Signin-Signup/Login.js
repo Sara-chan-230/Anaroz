@@ -22,7 +22,6 @@ const Login = () => {
       className="w-full flex flex-col gap-5 justify-center items-center"
     >
 
-      <ToastContainer theme="colorred" position="top-center" />
       <h1 className="text-2xl font-bold text-center">
         Sign in to{" "}
         <Link

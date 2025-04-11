@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const AmoutSection = () => {
+    const {user} = useSelector((state)=>state.auth)
   return (
     <div className="bg-white mt-24 rounded-md overflow-hidden relative">
       <div className="bg-blue-400 flex flex-col gap-4 items-center justify-center py-10 rounded-md">
@@ -56,7 +58,7 @@ const AmoutSection = () => {
             </motion.svg>
           </div>
         </div>
-        <h3 className="text-xl text-lightBlue font-semibold">100 HP</h3>
+        <h3 className="text-xl text-lightBlue font-semibold">{user.hope_piece} HP</h3>
       </div>
 
       <div className="p-6 text-center bg-gray-50 rounded-b-md">

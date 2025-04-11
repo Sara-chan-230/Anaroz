@@ -5,10 +5,12 @@ import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import Select from "@mui/material/Select";
 import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
 
 const SettingSection = () => {
+    const {user} = useSelector((state)=>state.auth);  
   const [sexe, setSexe] = useState("");
-  const [userInfo,setUserInfo] = useState({fname : "" , age : null, email : "", phone : "" , codePostal : "", skills : ""});
+  const [userInfo,setUserInfo] = useState({fname : user.full_name , age : user.age, email : user.email, phone : user.phone , codePostal : user.code_postal, skills : ""});
   const handleChange = (event) => {
     setSexe(event.target.value);
   };

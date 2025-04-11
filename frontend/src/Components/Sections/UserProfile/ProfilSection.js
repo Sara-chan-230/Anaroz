@@ -6,8 +6,10 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from "react-redux";
 
 const ProfilSection = () => {
+    const {user} = useSelector((state)=>state.auth)
   const VisuallyHiddenInput = styled("input")({
     clipPath: "inset(50%)",
     height: 1,
@@ -41,13 +43,13 @@ const ProfilSection = () => {
       <Avatar
         sx={{ bgcolor: "#ba68c8", width: 100, height: 100 }}
         alt="Hope Bird"
-        src={require("../../../Assets/Images/about/Testimonial/Yassmin-haddad.webp")}
+        src={user.photo}
       />
 
       {/* User Info */}
       <div className="flex flex-col items-center gap-1">
-        <h3 className="text-lg font-semibold">Yassmin Haddad</h3>
-        <span className="text-sm">Supporter</span>
+        <h3 className="text-lg font-semibold">{user.full_name}</h3>
+        <span className="text-sm">{user.rule}</span>
       </div>
 
       <div className="absolute top-6 left-6 w-8 h-8 bg-pink-500 rounded-full opacity-30"></div>

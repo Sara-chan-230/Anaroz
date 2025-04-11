@@ -8,28 +8,30 @@ import { toast, ToastContainer } from "react-toastify";
 
 const Signup = () => {
   const [phone, setPhone] = useState("");
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
   const [pass, setPass] = useState("")
   const [newuserInfo, setNewUserInfo] = useState({
-    fname: "",
+    full_name: "",
     rule: "",
     phone: "",
     email: "",
-    codePostal: "",
+    code_postal: "",
     password: "",
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(newuserInfo.rule === "") return toast.error("the Rule is Required");
-    if(newuserInfo.fname === "") return toast.error("the name is required");
-    if(newuserInfo.email === "") return toast.error("the email is required");
-    if(newuserInfo.phone === "") return toast.error("the Phone number is Reuquired");
-    if(newuserInfo.codePostal === "") return toast.error("the postal code is Required");
-    if(newuserInfo.password === "") return toast.error("the password is Required");
-    if(newuserInfo.password !== pass) return toast.error("invalid Password");
-
-
-    dispatch(CreateAcount(newuserInfo));
+  
+    const updatedUser = { ...newuserInfo, phone }; 
+  
+    if (updatedUser.rule === "") return toast.error("The Rule is required");
+    if (updatedUser.full_name === "") return toast.error("The name is required");
+    if (updatedUser.email === "") return toast.error("The email is required");
+    if (updatedUser.code_postal === "") return toast.error("The postal code is required");
+    if (updatedUser.password === "") return toast.error("The password is required");
+    if (updatedUser.password !== pass) return toast.error("Passwords do not match");
+    console.log(updatedUser)
+  
+    dispatch(CreateAcount(updatedUser));
   };
   return (
     <form
@@ -52,6 +54,8 @@ const Signup = () => {
         <select
           className="w-full bg-transparent outline-none text-sm text-gray-700 cursor-pointer"
           defaultValue=""
+          value={newuserInfo.rule}
+          onChange={(e)=>{setNewUserInfo({...newuserInfo, rule : e.target.value})}}
         >
           <option value="" disabled className="text-gray-500">
             How would you like to contribute?
@@ -59,7 +63,7 @@ const Signup = () => {
           <option className="text-black" value="supporter">
             Supporter
           </option>
-          <option className="text-black" value="affected">
+          <option className="text-black" value="affected person">
             Affected Person
           </option>
         </select>
@@ -70,9 +74,9 @@ const Signup = () => {
           type="text"
           placeholder="Full name"
           className="w-full outline-none pl-2"
-          value={newuserInfo.fname}
+          value={newuserInfo.full_name}
           onChange={(e) => {
-            setNewUserInfo({ ...newuserInfo, fname: e.target.value });
+            setNewUserInfo({ ...newuserInfo, full_name: e.target.value });
           }}
         />
       </div>
@@ -102,9 +106,9 @@ const Signup = () => {
           type="text"
           placeholder="Code Postale"
           className="w-full outline-none pl-2"
-          value={newuserInfo.codePostal}
+          value={newuserInfo.code_postal}
           onChange={(e) => {
-            setNewUserInfo({ ...newuserInfo, codePostal: e.target.value });
+            setNewUserInfo({ ...newuserInfo, code_postal: e.target.value });
           }}
         />
       </div>

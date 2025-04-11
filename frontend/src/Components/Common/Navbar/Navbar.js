@@ -77,15 +77,15 @@ const Navbar = () => {
                     className="w-5 h-5 mr-2"
                   />
                   <span className="font-semibold text-sm">
-                    100
+                    {user.hope_piece}
                   </span>
                 </div>
 
                 {/* Avatar */}
                   <Link to = {`profile/${user._id}`}>
                   <Avatar
-                    alt="Ahmad Ali"
-                    src={require("../../../Assets/Images/about/girl.jpg")}
+                    alt={user.full_name}
+                    src={user.photo}
                     className="w-10 h-10  border-white"
                   />
                   </Link>

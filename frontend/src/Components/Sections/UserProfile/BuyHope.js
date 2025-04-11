@@ -19,7 +19,8 @@ const BuyHope = () => {
   const { loading, purchaseSuccess, error } = useSelector(
     (state) => state.donation
   );
-  const [amount, setAmount] = useState(null);
+    const {user} = useSelector((state)=>state.auth)
+    const [amount, setAmount] = useState(null);
   const artworkID = "ART-12345";
 
   const handleCreateOrder = async () => {

@@ -15,7 +15,7 @@ const UerProfile = () => {
       <div className="relative grid grid-cols-[25vw_auto_20vw] gap-x-8  px-8 pb-10">
       <ProfilSection />
       <SettingSection />
-      <AmoutSection />
+      {user.rule === "affected person" ? <HelpCallSection /> : <AmoutSection />}
       </div>
     </div>
   );

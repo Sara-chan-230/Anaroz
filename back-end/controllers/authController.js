@@ -10,9 +10,7 @@ exports.signup = asyncHandler(async (req, res) => {
   const { full_name, email, password, phone, rule, code_postal } = req.body;
 
   // Vérifier si tous les champs sont présents
-  if (!full_name || !email || !password || !phone || !rule || !code_postal) {
-    return res.status(400).json({ message: "Tous les champs sont requis" });
-  }
+ 
 
   // Vérifier si l'email est déjà pris
   const userExists = await User.findOne({ email });
