@@ -1,5 +1,10 @@
+import { useSelector } from "react-redux";
 
 const Rapport = () => {
+  const {campaigns} = useSelector((state)=>state.campaigns);
+  const completed = campaigns.filter((cam)=>{
+    return cam.wallet === cam.budjet;
+  })
   return (
     <div className="w-64 hidden lg:block">
       <div className="bg-white p-4 rounded-lg shadow-xs border border-gray h-full flex flex-col">
@@ -28,13 +33,13 @@ const Rapport = () => {
                 stroke="#0866FF"
                 strokeWidth="2"
                 strokeDasharray="100 100"
-                strokeDashoffset={100 - 60}
+                strokeDashoffset={100 - Number(completed.lenght/campaigns.length*100)}
                 strokeLinecap="round"
                 transform="rotate(-90 18 18)"
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-xl font-semibold text-gray-800">60%</span>
+              <span className="text-xl font-semibold text-gray-800">{completed.lenght}</span>
               <span className="text-xs text-gray-500 mt-0.5">Complete</span>
             </div>
           </div>
@@ -49,7 +54,7 @@ const Rapport = () => {
                   Completed Campaigns
                 </span>
                 <span className="text-base font-semibold text-blue-700">
-                  14
+                  {completed.length}
                 </span>
               </div>
             </div>

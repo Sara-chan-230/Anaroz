@@ -19,19 +19,17 @@ import {
   DialogContent,
   IconButton,
   Typography,
-  Chip, 
+  Chip,
 } from "@mui/material";
 import PostPopup from "./PostPopup";
 import getPostTypeColor from "../../Utils/PostColor";
 
-
-const Post = () => {
-  const color = getPostTypeColor("news");
+const Post = ({ postData }) => {
+  const color = getPostTypeColor(postData.type);
   const [open, setOpen] = useState(false);
-  const [likes, setLikes] = useState(12);
-  const [liked, setLiked] = useState(false);
-  const [comments, setComments] = useState([]);
-
+  const [likes, setLikes] = useState(postData.liked_by.length || 0);
+  const [liked, setLiked] = useState(false); // Optionally compare with user ID
+  const [comments, setComments] = useState(postData.comments || []);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -56,32 +54,40 @@ const Post = () => {
         onClick={handleOpen}
       >
         <CardHeader
-          avatar={<Avatar sx={{ bgcolor: "#ba68c8" }}>H</Avatar>}
+          avatar={
+            <Avatar
+              alt="organization"
+              className="w-10 h-10 border-white"
+            />
+          }
           title="Hope Bird"
-          subheader="Two days ago"
+          subheader={new Date(postData.date).toLocaleDateString()}
         />
 
         <Chip
-          label="disaster"
+          label={postData.type}
           sx={{
             position: "absolute",
             top: 10,
             right: 10,
-            backgroundColor: {color},
+            backgroundColor: color,
             color: "#fff",
+            textTransform: "capitalize",
           }}
         />
 
-        <CardContent sx={{padding : "20px"}}>
-          <h3 className="tet-sm mb-2 font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quisquam sapient</h3>
-          <p className="text-xs leading-snug line-clamp-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi veritatis eaque aspernatur perferendis tenetur odio expedita vitae, sint minima doloremque quae a consectetur placeat voluptatem laudantium tempora quo porro amet!</p>
+        <CardContent sx={{ padding: "20px" }}>
+          <h3 className="text-sm mb-2 font-bold">{postData.title}</h3>
+          <p className="text-xs leading-snug line-clamp-2">{postData.content}</p>
         </CardContent>
+
         <CardMedia
           component="img"
           height="300"
-          image={require("../../Assets/Images/about/earthquake.webp")}
+          image={postData.photo}
           alt="Post image"
         />
+
         <CardActions disableSpacing>
           <IconButton onClick={handleLike}>
             {liked ? <FavoriteIcon color="error" /> : <FavoriteBorderIcon />}
@@ -102,7 +108,7 @@ const Post = () => {
 
       <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
         <DialogContent>
-          <PostPopup />
+          <PostPopup post={postData} />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} startIcon={<CloseIcon />}>
@@ -113,5 +119,6 @@ const Post = () => {
     </>
   );
 };
+
 
 export default Post;

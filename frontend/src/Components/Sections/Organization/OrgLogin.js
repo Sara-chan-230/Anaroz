@@ -16,7 +16,7 @@ const YourComponent = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(orgInfo.email === "") return toast.error("the email is Required");
-    if(orgInfo.password ==="") return toast.error("the password is Required")
+    if(orgInfo.password ==="") return toast.error("the password is Required");
     dispatch(loginOrg(orgInfo));
   }
   return (

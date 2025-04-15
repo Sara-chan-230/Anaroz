@@ -22,11 +22,7 @@ exports.getCampaignsByOrganisation = asyncHandler(async (req, res) => {
     });
   }
 
-  res.status(200).json({
-    success: true,
-    count: campaigns.length,
-    data: campaigns
-  });
+  res.status(200).json(campaigns);
 });
 
 // Créer une nouvelle campagne
@@ -83,3 +79,28 @@ exports.getAllCampaigns = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+
+
+// Trouver une campagne par ID
+exports.findCampaignById = asyncHandler(async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ 
+      success: false,
+      message: "ID de campagne invalide" 
+    });
+  }
+
+  const campaign = await Campaign.findById(id)
+    .populate('organisation_id', 'name logo'); // Peupler l'organisation si nécessaire
+
+  if (!campaign) {
+    return res.status(404).json({ 
+      success: false,
+      message: "Campagne non trouvée" 
+    });
+  }
+
+  res.status(200).json(campaign);
+});

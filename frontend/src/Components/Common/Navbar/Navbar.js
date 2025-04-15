@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   const { user } = useSelector((state) => state.auth);
+  const { org } = useSelector((state) => state.orgauth);
   const [open, setOpen] = useState(false);
   const handleClickOpen = () => {
     setOpen(true);
@@ -62,12 +63,12 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="hidden lg:flex space-x-2">
-          <button
-                  onClick={handleClickOpen}
-                  className=" inline-block  px-6 py-3 mr-3 font-bold bg-primary text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl  leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-110 hover:rotate-2 hover:bg-secondary hover:shadow-lg active:opacity-85"
-                >
-                  Contact us
-                </button>
+            <button
+              onClick={handleClickOpen}
+              className=" inline-block  px-6 py-3 mr-3 font-bold bg-primary text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl  leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-110 hover:rotate-2 hover:bg-secondary hover:shadow-lg active:opacity-85"
+            >
+              Contact us
+            </button>
             {user ? (
               <>
                 <div className="flex items-center bg-[#E2E5E9] px-4 py-0 rounded-full">
@@ -82,17 +83,26 @@ const Navbar = () => {
                 </div>
 
                 {/* Avatar */}
-                  <Link to = {`profile/${user._id}`}>
+                <Link to={`profile/${user._id}`}>
                   <Avatar
                     alt={user.full_name}
                     src={user.photo}
                     className="w-10 h-10  border-white"
                   />
-                  </Link>
+                </Link>
+              </>
+            ) : org ? (
+              <>
+                <Link to={`organization/${org._id}`}>
+                  <Avatar
+                    alt={org.name}
+                    src={org.logo}
+                    className="w-10 h-10  border-white"
+                  />
+                </Link>
               </>
             ) : (
               <>
-               
                 <button
                   onClick={() => navigate("/signup")}
                   className="inline-block px-6 py-3 mr-3 font-bold bg-primary text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl  leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-110 hover:rotate-2 hover:bg-secondary hover:shadow-lg active:opacity-85"

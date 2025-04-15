@@ -14,11 +14,12 @@ import {
 } from "@mui/icons-material";
 import { useState } from "react";
 
-const PostPopup = () => {
-  const [likes, setLikes] = useState(12);
-  const [liked, setLiked] = useState(false);
-  const [comments, setComments] = useState([]);
+const PostPopup = ({ post }) => {
+  const [likes, setLikes] = useState(post.liked_by.length || 0);
+  const [liked, setLiked] = useState(false); // Optionally initialize based on current user
+  const [comments, setComments] = useState(post.comments || []);
   const [newComment, setNewComment] = useState("");
+
   const toggleLike = () => {
     setLiked(!liked);
     setLikes(liked ? likes - 1 : likes + 1);
@@ -38,8 +39,10 @@ const PostPopup = () => {
       setNewComment("");
     }
   };
+
   return (
     <div>
+      {/* Header */}
       <Box
         sx={{
           display: "flex",
@@ -52,25 +55,29 @@ const PostPopup = () => {
           <Box>
             <Typography fontWeight="bold">Hope Bird</Typography>
             <Typography variant="caption" color="text.secondary">
-              Two days ago
+              {new Date(post.date).toLocaleDateString()}
             </Typography>
           </Box>
         </Box>
-        <Chip label="News" color="secondary" size="small" />
-      </Box>
-      <Box sx={{ my: 3 }}>
-          <h3 className="tet-sm mb-2 font-bold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, quisquam sapient</h3>
-          <p className="text-xs leading-snug line-clamp-2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi veritatis eaque aspernatur perferendis tenetur odio expedita vitae, sint minima doloremque quae a consectetur placeat voluptatem laudantium tempora quo porro amet!</p>
+        <Chip label={post.type} color="secondary" size="small" />
       </Box>
 
+      {/* Title & Content */}
+      <Box sx={{ my: 3 }}>
+        <h3 className="tet-sm mb-2 font-bold">{post.title}</h3>
+        <p className="text-xs leading-snug line-clamp-2">{post.content}</p>
+      </Box>
+
+      {/* Image */}
       <Box sx={{ width: "100%", mt: 2, mb: 3 }}>
         <img
           style={{ width: "100%", borderRadius: 8 }}
-          src={require("../../Assets/Images/about/earthquake.webp")}
+          src={post.photo}
           alt="Post"
         />
       </Box>
 
+      {/* Actions */}
       <Box sx={{ display: "flex", gap: 3, alignItems: "center", py: 2 }}>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <IconButton onClick={toggleLike}>
@@ -96,6 +103,7 @@ const PostPopup = () => {
 
       <Divider />
 
+      {/* Add Comment */}
       <Box sx={{ display: "flex", gap: 2, alignItems: "center", mt: 3 }}>
         <TextField
           fullWidth
@@ -104,9 +112,7 @@ const PostPopup = () => {
           placeholder="Write a comment..."
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
-          InputProps={{
-            sx: { borderRadius: 4 },
-          }}
+          InputProps={{ sx: { borderRadius: 4 } }}
         />
         <IconButton
           color="primary"
@@ -131,9 +137,11 @@ const PostPopup = () => {
 
         {comments.length > 0 ? (
           <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-            {comments.map((comment) => (
-              <Box key={comment.id} sx={{ display: "flex", gap: 2 }}>
-                <Avatar sx={{ bgcolor: "#ba68c8" }}>{comment.avatar}</Avatar>
+            {comments.map((comment, index) => (
+              <Box key={index} sx={{ display: "flex", gap: 2 }}>
+                <Avatar sx={{ bgcolor: "#ba68c8" }}>
+                  {comment.avatar || comment.user?.[0] || "?"}
+                </Avatar>
                 <Box
                   sx={{
                     bgcolor: "action.hover",

@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
 import HelpForm from "./HelpForm";
 import Dialog from "@mui/material/Dialog";
-import { Button } from "@mui/material";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { use, useState } from "react";
+
 
 const HelpCallSection = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +17,7 @@ const HelpCallSection = () => {
   };
   return (
     <>
-      <div className="bg-white mt-24 rounded-md overflow-hidden relative max-w-md mx-auto border border-blue-50">
+      <div className="bg-white  mt-24 rounded-md overflow-hidden relative max-w-md mx-auto border border-blue-50">
         {/* Top Section */}
         <div className="bg-blue-500 flex flex-col gap-4 items-center justify-center py-12 rounded-md">
           <motion.div className="relative" whileHover={{ scale: 1.05 }}>
@@ -66,7 +65,7 @@ const HelpCallSection = () => {
           </motion.div>
 
           <h3 className="text-xl font-bold text-white tracking-wide">
-            150 Help Calls
+            2 Help Calls
           </h3>
         </div>
 
@@ -126,58 +125,6 @@ const HelpCallSection = () => {
         <DialogContent sx={{ px: 3, pt: 2, pb: 0 }}>
           <HelpForm />
         </DialogContent>
-
-        <DialogActions
-          sx={{
-            px: 3,
-            py: 2,
-            gap: 2,
-            borderTop: "1px solid rgba(6, 55, 81, 0.1)",
-          }}
-        >
-          <Button
-            onClick={handleClose}
-            fullWidth
-            variant="outlined"
-            sx={{
-              boxShadow: "none",
-              "&:hover": {
-                boxShadow: "none",
-                backgroundColor: "rgba(6, 55, 81, 0.08)",
-                borderColor: "#063751",
-              },
-              textTransform: "none",
-              py: 1.25,
-              borderRadius: "8px",
-              borderWidth: "1.5px",
-              borderColor: "rgba(6, 55, 81, 0.3)",
-              color: "#063751",
-              fontWeight: 500,
-            }}
-          >
-            Cancel
-          </Button>
-
-          <Button
-            onClick={handleClose}
-            fullWidth
-            variant="contained"
-            sx={{
-              backgroundColor: "#063751",
-              "&:hover": {
-                backgroundColor: "#04283a",
-              },
-              boxShadow: "none",
-              textTransform: "none",
-              py: 1.25,
-              borderRadius: "8px",
-              fontWeight: 500,
-            }}
-            autoFocus
-          >
-            Post
-          </Button>
-        </DialogActions>
       </Dialog>
     </>
   );

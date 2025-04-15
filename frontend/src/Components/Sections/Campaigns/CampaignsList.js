@@ -1,5 +1,5 @@
-import Campaign from "../../Cards/Campaign"
-import {useState} from "react";
+import Campaign from "../../Cards/Campaign";
+import { useState, useEffect } from "react";
 import {
   Box,
   TextField,
@@ -15,23 +15,45 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import ClearIcon from "@mui/icons-material/Clear";
+import { useSelector, useDispatch } from "react-redux";
+import { getCampaings } from "../../../Redux/APICalls/campaignsCall";
 
 const CampaignsList = () => {
+  const { campaigns } = useSelector((state) => state.campaigns);
+  const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("all");
   const [showFilters, setShowFilters] = useState(false);
+  const [campaignRender, setCampaignRender] = useState([]);
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const handleFilterChange = (event) => {
     setFilter(event.target.value);
+    filterCampaigns(event.target.value);
   };
 
   const clearFilters = () => {
     setSearchTerm("");
     setFilter("all");
   };
+
+  const filterCampaigns = (cat) => {
+    const newArray = campaigns.filter((item) => {
+      return item.category === cat;
+    });
+    if (cat === "all") {
+      setCampaignRender(campaigns);
+    } else {
+      setCampaignRender(newArray);
+    }
+  };
+
+  useEffect(() => {
+    dispatch(getCampaings());
+    setCampaignRender(campaigns);
+  }, [campaigns]);
   return (
     <div>
       <Container maxWidth="lg">
@@ -151,7 +173,9 @@ const CampaignsList = () => {
             width: "100%",
           }}
         >
-          <Campaign />
+          {campaignRender.map((cam, id) => {
+            return <Campaign campaign={cam} key={id} />;
+          })}
         </Box>
       </Container>
     </div>

@@ -34,7 +34,7 @@ const NavSection = () => {
           <Link to={`profile/${user._id}`}>
             <Avatar
               alt="Ahmad Ali"
-              src={require("../../../Assets/Images/about/girl.jpg")}
+              src={user.photo}
               className="w-10 h-10  border-white"
             />
           </Link>

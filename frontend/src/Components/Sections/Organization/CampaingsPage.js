@@ -50,10 +50,10 @@ const CampaignsPage = () => {
     setCampaignsRender(newCampaigns);
   };
 
-  // useEffect(()=>{
-  //   dispatch(getCampaingsByOrganizationId(org.id));
+  useEffect(()=>{
+    dispatch(getCampaingsByOrganizationId(org._id));
 
-  // },[campaigns]);
+  },[campaigns]);
 
   return (
     <>
@@ -121,19 +121,9 @@ const CampaignsPage = () => {
           </div>
         </div>
         <div className="flex flex-wrap gap-3 p-4">
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
-          <Campaign />
+          {campaigsRender.map((cam)=>{
+            return <Campaign campaign={cam}/>
+          })}
         </div>
       </div>
 

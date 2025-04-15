@@ -11,13 +11,13 @@ import NewspaperRoundedIcon from "@mui/icons-material/NewspaperRounded";
 import CampaignRoundedIcon from "@mui/icons-material/CampaignRounded";
 import ColorLensRoundedIcon from "@mui/icons-material/ColorLensRounded";
 import Avatar from "@mui/material/Avatar";
-import { useSelector , useDispatch} from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { getPosts } from "../../Redux/APICalls/postsCall";
 
 const New = () => {
   const { posts } = useSelector((state) => state.posts);
-  const {user} = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [postsToRender, setPostsToRender] = useState(posts);
   const filterCampaigns = (cat) => {
@@ -26,11 +26,14 @@ const New = () => {
     });
     setPostsToRender(newPosts);
   };
-  useEffect(()=>{
+  useEffect(() => {
     dispatch(getPosts());
-  },[posts]);
+  }, []);
   return (
-    <div className="bg-lightBg grid relative w-screen">
+    <>
+    {
+      posts? (
+        <div className="bg-lightBg grid relative w-screen">
       <NavSection />
       <main className="relative top-24">
         <div className="relative grid grid-cols-[20vw_auto_20vw] gap-x-8 px-8">
@@ -40,12 +43,12 @@ const New = () => {
                 <Avatar
                   sx={{ bgcolor: "#0866FF" }}
                   alt="Remy Sharp"
-                  src="../../../Assets/Images/about/girl.jpg"
+                  src={user.photo}
                 />
               </div>
               <div>
-                <h4 className="text font-semibold">Remy Sharp</h4>
-                <p className="text-xs text-gray">Supporter</p>
+                <h4 className="text-sm font-semibold">{user.full_name}</h4>
+                <p className="text-xs text-gray">{user.rule}</p>
               </div>
             </div>
             <List
@@ -107,14 +110,21 @@ const New = () => {
             </List>
           </div>
           <div className="space-y-8 pb-36">
-            <Post />
-            <Post />
-            <Post />
+            {posts.map((item) => {
+              return <Post postData={item} />;
+            })}
           </div>
           <RightBar />
         </div>
       </main>
     </div>
+      ) : (
+        <div>
+          nothing
+        </div>
+      ) 
+    }
+    </>
   );
 };
 

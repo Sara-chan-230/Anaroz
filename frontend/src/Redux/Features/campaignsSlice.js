@@ -4,6 +4,7 @@ const initialState = {
   campaigns : [],
   isCampaignCreated : false,
   loading : false,
+  camp : {}
 };
 
 export const campaignsSlice = createSlice({
@@ -25,10 +26,12 @@ export const campaignsSlice = createSlice({
     clearCampaignCreated : (state)=>{
       state.isCampaignCreated = false;
     },
-    
+    setCamp : (state,action)=>{
+      state.camp = action.payload;
+    }
 
   },
 });
 
-export const {setCampaigns, setCampaignCreated,setloading,clearLoading,clearCampaignCreated} = campaignsSlice.actions;
+export const {setCampaigns, setCampaignCreated,setloading,clearLoading,clearCampaignCreated, setCamp} = campaignsSlice.actions;
 export const campaignsReducer = campaignsSlice.reducer;

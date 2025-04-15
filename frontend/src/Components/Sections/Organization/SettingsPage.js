@@ -6,13 +6,15 @@ import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { TextField} from "@mui/material";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const SettingsPage = () => {
+  const {org} = useSelector((state)=>state.orgauth)
   const [orgInfo, setOrgInfo] = useState({
-    orgName: "",
-    phone: "",
-    email: "",
-    about: "",
+    name: org.name,
+    phone: org.phone,
+    email: org.email,
+    description: org.description,
   });
   const VisuallyHiddenInput = styled("input")({
     clipPath: "inset(50%)",
@@ -35,31 +37,26 @@ const SettingsPage = () => {
         <Avatar
           sx={{ bgcolor: "#ba68c8", width: 100, height: 100 }}
           alt="Hope Bird"
-          src={require("../../../Assets/Images/about/Testimonial/Karim-Dounia.webp")}
+          src={org.logo}
         />
 
         {/* User Info */}
         <div className="flex flex-col items-center gap-1">
-          <h3 className="text-lg font-semibold">Moad Haddad</h3>
+          <h3 className="text-lg font-semibold">{org.name}</h3>
           <span className="text-sm">Organization</span>
         </div>
 
         {/* Stats Section */}
         <div className="gap-2 justify-center items-center flex w-full max-w-xs text-center relative z-10">
           <div>
-            <span className="block text-lg font-semibold">80</span>
+            <span className="block text-lg font-semibold">5</span>
 
             <span className="text-xs"> Campaings</span>
           </div>
           <Divider orientation="vertical" flexItem />
           <div>
-            <span className="block text-lg font-semibold">78</span>
+            <span className="block text-lg font-semibold">8</span>
             <span className="text-xs">Posts</span>
-          </div>
-          <Divider orientation="vertical" flexItem />
-          <div>
-            <span className="block text-lg font-semibold">2</span>
-            <span className="text-xs">Volunteering</span>
           </div>
         </div>
 

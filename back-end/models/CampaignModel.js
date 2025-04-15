@@ -16,7 +16,7 @@ const campaignSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum: ['disaster', 'emergency', 'health', 'education', 'environment'], // Catégories possibles
+    enum: ['disaster', 'emergency', 'health', 'education', 'environment','food','animals','rights','community','arts'], // Catégories possibles
     required: true,
   },
   max_volunteers: {

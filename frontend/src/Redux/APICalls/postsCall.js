@@ -12,6 +12,18 @@ export const getPosts = () => {
     }
   };
 };
+
+export const getPostsByOrganizationId = (orgId) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await request.get(`/api/compaigns/organisation/${orgId}`);
+      dispatch(setPosts(data));
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
+};
+
 export const CreatePost = (postData) => {
   return async (dispatch) => {
     try {

@@ -11,7 +11,7 @@ const getDegreeColor = (degree) => {
   switch (degree) {
     case "high":
       return "error";
-    case "medium":
+    case "moderate":
       return "warning";
     case "low":
       return "info";
@@ -20,21 +20,24 @@ const getDegreeColor = (degree) => {
   }
 };
 
-const HelpCallMap = ({ locations }) => {
+const HelpCallMap = () => {
+  const { helpCalls = [] } = useSelector((state) => state.helpCalls);
   const [center, setCenter] = useState([34.020882, -6.84165]);
   const [zoom, setZoom] = useState(10);
   const navigate = useNavigate();
-  const {helpCalls} = useSelector((state)=>state.helpCalls);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getHelpCalls())
-    if (locations.length > 0) {
+    dispatch(getHelpCalls());
+    console.log(helpCalls)
+  }, [dispatch]);
 
-      const firstLocation = locations[0];
+  useEffect(() => {
+    if (helpCalls.length > 0) {
+      const firstLocation = helpCalls[0];
       setCenter([firstLocation.lat, firstLocation.lng]);
     }
-  }, [locations, helpCalls]);
+  }, [helpCalls]);
 
   return (
     <div style={{ position: "relative" }}>
@@ -44,10 +47,10 @@ const HelpCallMap = ({ locations }) => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {locations.map((location, index) => (
+        {helpCalls.map((helpCalls, index) => (
           <Marker
             key={index}
-            position={[location.lat, location.lng]}
+            position={[helpCalls.latitude, helpCalls.longitude]}
             icon={
               new L.Icon({
                 iconUrl: "/alarm.png",
@@ -62,9 +65,9 @@ const HelpCallMap = ({ locations }) => {
     {/* Urgency indicator bar */}
     <div
       className={`absolute top-0 left-0 h-1.5 w-full ${
-        location.degree === "high"
+        helpCalls.degree_of_danger === "high"
           ? "bg-gradient-to-r from-rose-500 via-rose-600 to-red-600"
-          : location.degree === "medium"
+          : helpCalls.degree_of_danger === "medium"
           ? "bg-gradient-to-r from-amber-400 via-amber-500 to-amber-600"
           : "bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600"
       }`}
@@ -74,9 +77,9 @@ const HelpCallMap = ({ locations }) => {
     <div className="flex items-start justify-start p-5 pb-3 mb-2">
       <div
         className={`p-2.5 rounded-xl mr-3 shadow-sm ${
-          location.degree === "high"
+          helpCalls.degree_of_danger === "high"
             ? "bg-rose-50"
-            : location.degree === "medium"
+            : helpCalls.degree_of_danger === "medium"
             ? "bg-amber-50"
             : "bg-blue-50"
         }`}
@@ -93,16 +96,16 @@ const HelpCallMap = ({ locations }) => {
         </h3>
         <div
           className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${
-            location.degree === "high"
+            helpCalls.degree_of_danger === "high"
               ? "bg-rose-100 text-rose-800"
-              : location.degree === "medium"
+              : helpCalls.degree_of_danger === "medium"
               ? "bg-amber-100 text-amber-800"
               : "bg-blue-100 text-blue-800"
           }`}
         >
-          {location.degree === "high"
+          {helpCalls.degree_of_danger === "high"
             ? "❗ Emergency Situation"
-            : location.degree === "medium"
+            : helpCalls.degree_of_danger === "medium"
             ? "⚠️ Urgent Help Needed"
             : "ℹ️ Assistance Request"}
         </div>
@@ -116,9 +119,9 @@ const HelpCallMap = ({ locations }) => {
         <div className="flex items-center mb-2">
           <div
             className={`w-1.5 h-4 rounded-full mr-2 ${
-              location.degree === "high"
+              helpCalls.degree_of_danger === "high"
                 ? "bg-rose-500"
-                : location.degree === "medium"
+                : helpCalls.degree_of_danger === "medium"
                 ? "bg-amber-500"
                 : "bg-blue-500"
             }`}
@@ -128,19 +131,19 @@ const HelpCallMap = ({ locations }) => {
           </h4>
         </div>
         <p className="text-sm text-gray-700 pl-3.5 leading-relaxed">
-          {location.description}
+          {helpCalls.description}
         </p>
       </div>
 
       {/* Required help */}
-      {location.requiredHelp && (
+      {helpCalls.requiredHelp && (
         <div className="mb-4">
           <div className="flex items-center mb-2">
             <div
               className={`w-1.5 h-4 rounded-full mr-2 ${
-                location.degree === "high"
+                helpCalls.degree_of_danger === "high"
                   ? "bg-rose-500"
-                  : location.degree === "medium"
+                  : helpCalls.degree_of_danger === "medium"
                   ? "bg-amber-500"
                   : "bg-blue-500"
               }`}
@@ -150,7 +153,7 @@ const HelpCallMap = ({ locations }) => {
             </h4>
           </div>
           <p className="text-sm text-gray-700 pl-3.5 leading-relaxed">
-            {location.requiredHelp}
+            {helpCalls.requiredHelp}
           </p>
         </div>
       )}
@@ -171,7 +174,7 @@ const HelpCallMap = ({ locations }) => {
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          {new Date(location.timestamp).toLocaleTimeString([], {
+          {new Date(helpCalls.date).toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
           })}

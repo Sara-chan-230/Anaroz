@@ -10,37 +10,37 @@ import { toast, ToastContainer } from "react-toastify";
 import { CreatePost } from "../../../Redux/APICalls/postsCall";
 
 const AddNewPost = () => {
-  const [category, setcategory] = useState("");
+  const [type, settype] = useState("");
   const [fileName, setFileName] = useState("");
-  const [pImage, setPImage] = useState(null);
-  const [ptitle, setpTitle] = useState("");
-  const [pcontent, setpContent] = useState("");
+  const [photo, setphoto] = useState(null);
+  const [title, settitle] = useState("");
+  const [content, setcontent] = useState("");
   const dispatch = useDispatch;
   const { isPostCreated, loadingPost } = useSelector((state) => state.posts);
   const { org } = useSelector((state) => state.orgauth);
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    setPImage(event.target.file[0]);
+    setphoto(event.target.file[0]);
     if (file) {
       setFileName(file.name);
     }
   };
 
   const handleChange = (event) => {
-    setcategory(event.target.value);
+    settype(event.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (pcontent == "") return toast.error("the description is required");
-    if (pImage == null) return toast.error("the Image is Required ");
-    if (ptitle == null) return toast.error("the title is Required");
+    if (content == "") return toast.error("the description is required");
+    if (photo == null) return toast.error("the Image is Required ");
+    if (title == null) return toast.error("the title is Required");
     dispatch(
       CreatePost({
-        title: ptitle,
-        image: pImage,
-        content: pcontent,
+        title: title,
+        image: photo,
+        content: content,
         organizationId: org.id,
       })
     );
@@ -60,17 +60,17 @@ const AddNewPost = () => {
         label="Post Title"
         size="small"
         fullWidth
-        value={ptitle}
+        value={title}
         onChange={(e) => {
-          setpTitle(e.target.value);
+          settitle(e.target.value);
         }}
       />
 
       <FormControl fullWidth size="small">
-        <InputLabel>category</InputLabel>
+        <InputLabel>type</InputLabel>
         <Select
-          value={category}
-          label="Category"
+          value={type}
+          label="type"
           onChange={handleChange}
           fullWidth
         >
@@ -86,9 +86,9 @@ const AddNewPost = () => {
         fullWidth
         multiline
         rows={4}
-        value={pcontent}
+        value={content}
         onChange={(e) => {
-          setpContent(e.target.value);
+          setcontent(e.target.value);
         }}
       />
 

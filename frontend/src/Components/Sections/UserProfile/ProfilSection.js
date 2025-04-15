@@ -67,12 +67,12 @@ const ProfilSection = () => {
       {/* Stats Section */}
       <div className="gap-2 justify-center items-center flex w-full max-w-xs text-center relative z-10">
         <div>
-          <span className="block text-lg font-semibold">80</span>
+          <span className="block text-lg font-semibold">0</span>
           <span className="text-xs">Contributions</span>
         </div>
         <Divider orientation="vertical" flexItem />
         <div>
-          <span className="block text-lg font-semibold">78</span>
+          <span className="block text-lg font-semibold">0</span>
           <span className="text-xs">Donations</span>
         </div>
         <Divider orientation="vertical" flexItem />

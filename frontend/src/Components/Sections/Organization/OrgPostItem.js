@@ -1,6 +1,9 @@
 import { Avatar } from "@mui/material";
+import {useSelector} from "react-redux"
 
 const PostItem = ({ post }) => {
+  const {org} = useSelector((state)=>state.orgauth)
+  console.log(post)
   return (
     <div
       style={{
@@ -16,10 +19,11 @@ const PostItem = ({ post }) => {
       <div className="flex ">
         {post.image && (
           <img
-            src={post.image}
+            src={require("../../../Assets/Images/home/Volunteer.webp")}
             alt="Post content"
             style={{
               width: "50%",
+              height : "400px",
               borderRadius: "8px",
               marginBottom: "12px",
             }}
@@ -30,17 +34,17 @@ const PostItem = ({ post }) => {
         style={{ display: "flex", alignItems: "center", marginBottom: "12px" }}
       >
         <Avatar
-          src={post.organization.logo}
-          alt={post.organization.name}
+          src={org.logo}
+          alt={org.name}
           style={{ width: "40px", height: "40px", marginRight: "12px" }}
         />
         <div>
           <h3 style={{ margin: 0, fontSize: "16px", fontWeight: "600" }}>
-            {post.organization.name}
+            {org.name}
           </h3>
           <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
             <span style={{ fontSize: "12px", color: "#65676B" }}>
-              12/03/4334
+              {post.date}
             </span>
             {/* Category label */}
             {post.category && (
@@ -60,8 +64,8 @@ const PostItem = ({ post }) => {
           </div>
         </div>
       </div>
-        <p className="text-lg font-bold mb-4">{post.content}</p>
-        <p className="text-sm">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum nulla doloremque fugiat magni sequi provident maiores saepe, tempore atque! Voluptatibus enim adipisci nisi incidunt molestias animi eveniet laudantium nulla.</p>
+        <p className="text-lg font-bold mb-4">{post.title}</p>
+        <p className="text-sm">{post.description}</p>
         </div>
       </div>
 
@@ -87,7 +91,7 @@ const PostItem = ({ post }) => {
             alignItems: "center",
           }}
         >
-          👍 Like
+           👍 Like
         </button>
         <button
           style={{

@@ -8,6 +8,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import { useState } from "react";
 import AddNewCampaign from "./AddNewCampaign";
+import { useSelector } from "react-redux";
 
 
 const TopBar = () => {
@@ -20,6 +21,8 @@ const TopBar = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  const {org} = useSelector((state)=>state.orgauth)
 
 
   return (
@@ -73,8 +76,8 @@ const TopBar = () => {
                   transition: "transform 0.2s",
                 },
               }}
-              alt="Hope Bird"
-              src={require("../../../Assets/Images/about/Testimonial/Karim-Dounia.webp")}
+              alt={org.name}
+              src={org.logo}
             />
           </div>
         </Toolbar>

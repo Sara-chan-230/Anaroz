@@ -9,7 +9,8 @@ export const CreateHelpCall = (helpData) => {
   return async (dispatch) => {
     try {
       dispatch(setHelpLoading());
-      await request.post("/api/campaigns", helpData);
+      const {data} = await request.post("/api/help_calls", helpData);
+      toast.success(data.message)
       dispatch(setCreated());
       setTimeout(() => {
         clearCreated();
@@ -27,7 +28,8 @@ export const Donate = (data) => {
   return async (dispatch) => {
     try {
       dispatch(setHelpLoading());
-      await request.post("/api/campaigns", data);
+      await request.post("/api/donations/donate", data);
+      toast.success(data.message)
       dispatch(setDonated());
       setTimeout(() => {
         clearDonated();
@@ -45,11 +47,13 @@ export const Volunteer = (data) => {
   return async (dispatch) => {
     try {
       dispatch(setHelpLoading());
-      await request.post("/api/campaigns", data);
+      await request.post("/api/donations/volunteer", data);
+      toast.success(data.message)
       dispatch(setVolunteer());
       setTimeout(() => {
         clearVolunteer();
       }, 2000);
+    dispatch(clearLoading())
     } catch (error) {
       toast.error(error.response.data.message);
       dispatch(clearLoading())

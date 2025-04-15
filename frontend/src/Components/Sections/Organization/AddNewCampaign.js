@@ -13,13 +13,13 @@ import { toast, ToastContainer } from "react-toastify";
 
 const AddNewCampaign = () => {
   const [category, setcategory] = useState("");
-  const [cTitle, setCTitle] = useState("");
-  const [cBudjet, setCBudjet] = useState(null);
-  const [maxVolunteers, setMaxVolunteers] = useState(null);
+  const [title, settitle] = useState("");
+  const [budjet, setbudjet] = useState(null);
+  const [max_volunteers, setmax_volunteers] = useState(null);
   const [fileName, setFileName] = useState("");
   const [image, setImage] = useState(null);
   const [isVolunteering, setIsVolunteering] = useState(false);
-  const [cDescription, setCDescription] = useState("");
+  const [description, setdescription] = useState("");
   const dispatch = useDispatch;
   const { isCampaignCreated, loading } = useSelector(
     (state) => state.campaigns
@@ -44,12 +44,12 @@ const AddNewCampaign = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(cTitle.trim()==="") return toast.error("the title is required");
-    if(cBudjet === null) return toast.error("the Budjet is Required");
-    if(cDescription == "") return toast.error("the description is required");
+    if(title.trim()==="") return toast.error("the title is required");
+    if(budjet === null) return toast.error("the Budjet is Required");
+    if(description == "") return toast.error("the description is required");
     if(image == null) return toast.error("the Image is Required ")
     dispatch(
-      CreateCampaign({category :  category, Title : cTitle, budjet :  cBudjet, description:  cDescription, cImage : image, maxVolunteers :  maxVolunteers, organizationId : org.id })
+      CreateCampaign({category :  category, Title : title, budjet :  budjet, description:  description, cImage : image, max_volunteers :  max_volunteers, organisation_id : org._id })
     )
   };
 
@@ -67,15 +67,15 @@ const AddNewCampaign = () => {
         label="Campaign Title"
         size="small"
         fullWidth
-        value={cTitle}
+        value={title}
         onChange={(e) => {
-          setCTitle(e.target.value);
+          settitle(e.target.value);
         }}
       />
       <TextField
-        value={cBudjet}
+        value={budjet}
         onChange={(e) => {
-          setCBudjet(e.target.value);
+          setbudjet(e.target.value);
         }}
         label="Campaign Budget"
         type="number"
@@ -110,7 +110,7 @@ const AddNewCampaign = () => {
           <MenuItem value="food">🍲 Food & Hunger</MenuItem>
           <MenuItem value="housing">🏠 Housing & Shelter</MenuItem>
           <MenuItem value="animals">🐾 Animal Welfare</MenuItem>
-          <MenuItem value="human_rights">
+          <MenuItem value="rights">
             ✊ Human Rights & Social Justice
           </MenuItem>
           <MenuItem value="community">🤝 Community Development</MenuItem>
@@ -119,9 +119,9 @@ const AddNewCampaign = () => {
       </FormControl>
       <div className="flex items-center justify-center gap-3">
         <TextField
-          value={maxVolunteers}
+          value={max_volunteers}
           onChange={(e) => {
-            setMaxVolunteers(e.target.value);
+            setmax_volunteers(e.target.value);
           }}
           label="Max Volunteers"
           type="number"
@@ -159,9 +159,9 @@ const AddNewCampaign = () => {
         <input type="file" className="hidden" onChange={handleFileChange} />
       </label>
       <TextField
-        value={cDescription}
+        value={description}
         onChange={(e) => {
-          setCDescription(e.target.value);
+          setdescription(e.target.value);
         }}
         label="Description"
         fullWidth

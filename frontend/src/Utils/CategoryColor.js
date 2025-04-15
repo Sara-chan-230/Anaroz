@@ -1,4 +1,4 @@
-export default getCategoryColor = (category) => {
+const getCategoryColor = (category) => {
     const categoryColors = {
       education: "#3498db", 
       health: "#e74c3c", 
@@ -14,5 +14,8 @@ export default getCategoryColor = (category) => {
   
     return categoryColors[category] || "#bdc3c7"; 
   };
+
+
+  export default getCategoryColor;
   
   

@@ -18,11 +18,7 @@ exports.getPostsByOrganisation = asyncHandler(async (req, res) => {
     });
   }
 
-  res.status(200).json({
-    success: true,
-    count: posts.length,
-    data: posts
-  });
+  res.status(200).json(posts);
 });
 
 const Post = require('../models/postModels');
@@ -79,6 +75,8 @@ exports.createPost = asyncHandler(async (req, res) => {
     }
   });
 });
+
+
 exports.getAllPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find();
   res.status(200).json(posts);
